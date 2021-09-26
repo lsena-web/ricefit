@@ -13917,7 +13917,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
 .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
-    background-color: #007bff;
+    background-color: #28a745;
     color: #fff
 }
 
@@ -14797,7 +14797,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .dark-mode .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
 .dark-mode .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
-    background-color: #3f6791;
+    background-color: #3d9970;
     color: #fff
 }
 

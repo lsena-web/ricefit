@@ -1,15 +1,29 @@
+<div class="modal fade" id="modalSucesso" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content bg-success">
+            <div class="modal-header d-flex justify-content-center">
+                <h5 class="modal-title text-light" id="staticBackdropLabel">Alteração realizada com Sucesso!</h5>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>" class="btn btn-lg btn-outline-light text-bold">Ok <i class="fas fa-stream"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><b>Perfil</b> <i class="fas fa-user"></i></i></h1>
+                    <h1><b>Perfil</b><i class="fas fa-user text-success ml-2"></i></i></h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Conselheiros</li>
+                        <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                        <li class="breadcrumb-item active">Perfil</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +39,7 @@
                     <div class="card-header row justify-content-end">
                         <div class="col-auto">
                             <h3 class="card-title">
-                                <b>Perfil </b><i class="fas fa-user text-success" style="font-size:25px;"></i></a>
+                                <b>Atualização</b><i class="fas fa-edit text-success ml-2" style="font-size:25px;"></i></a>
                             </h3>
                         </div>
                     </div>
@@ -37,32 +51,34 @@
 
                                     <div class="row">
 
+                                        <input type="hidden" name="id" value="<?php echo $inputs[0]['id']; ?>">
 
                                         <div class="col-lg-7 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="nome" placeholder="NOME" required autocomplete="off">
+                                            <input class="form-control form-control-lg" type="text" name="nome" placeholder="NOME" required autocomplete="off" value="<?php echo $inputs[0]['nome']; ?>">
                                         </div>
 
                                         <div class="col-lg-5 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="email" placeholder="LOGIN" required autocomplete="off">
+                                            <input class="form-control form-control-lg" type="text" name="login" placeholder="LOGIN" required autocomplete="off" value="<?php echo $inputs[0]['login']; ?>">
                                         </div>
 
                                         <div class="col-lg-7 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="nome" placeholder="E-MAIL" required autocomplete="off">
+                                            <input class="form-control form-control-lg" type="text" name="email" placeholder="E-MAIL" required autocomplete="off" value="<?php echo $inputs[0]['email']; ?>">
                                         </div>
 
                                         <div class="col-lg-5 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="cpf" placeholder="SENHA" required autocomplete="off">
+                                            <input class="form-control form-control-lg" type="text" name="senha" placeholder="SENHA" required autocomplete="off" value="<?php echo $inputs[0]['senha']; ?>">
                                         </div>
 
                                         <div class="col-lg-7 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="cpf" placeholder="CELULAR" required autocomplete="off">
+                                            <input class="form-control form-control-lg" type="text" name="celular" placeholder="CELULAR" required autocomplete="off" value="<?php echo $inputs[0]['celular']; ?>">
                                         </div>
 
                                         <div class="col-lg-5 col-md-6 mb-3">
                                             <div class="custom-file mt-1">
-                                                <input type="file" class="custom-file-input" name="img" id="customFile" required accept="image/*">
+                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" accept="image/*">
                                                 <label class="custom-file-label" for="customFile">Escolha uma Imagem de Perfil</label>
                                             </div>
+                                            <b><span>Formatos Permitidos: PNG, JPG, JPEG, SVG</span><i class="far fa-images ml-2"></i></b>
                                         </div>
 
 
