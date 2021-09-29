@@ -1,18 +1,17 @@
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+  <strong>Copyright &copy; 2021 <a href="#" class="text-success">riceFit</a>.</strong>
+  Todos os direitos reservados
+  <div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 0.0.1
+  </div>
+</footer>
 
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2021 <a href="#" class="text-success">riceFit</a>.</strong>
-    Todos os direitos reservados
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 0.0.1
-    </div>
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -50,5 +49,26 @@
 <script src="../b4/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../b4/dist/js/pages/dashboard.js"></script>
+
+<script>
+  // Summernote
+  $('#summernote').summernote({
+    minHeight: 300,
+    toolbar: [
+      // [groupName, [list of button]]
+      ['estilo', ['style']],
+      ['estilo2', ['bold', 'italic', 'underline', 'clear']],
+      ['fonte', ['fontname']],
+      ['fontsize', ['fontsize']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['tabela', ['table']],
+      ['height', ['height']],
+      ['insert', ['picture', 'link', 'hr']],
+      ['outros', ['fullscreen', 'help']]
+    ]
+  })
+</script>
 </body>
+
 </html>

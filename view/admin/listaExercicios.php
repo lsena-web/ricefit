@@ -88,7 +88,7 @@
                                 <td class="text-center text-lg"><?php echo $value['descricao']; ?></td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?file=<?php echo $value['id']; ?>" class="text-bold btn btn-lg btn-primary"><i class="fas fa-file-download"></i><span class="m-1">Anexo</span></a>
+                                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?file=<?php echo $value['id']; ?>" class="text-bold btn btn-lg btn-primary"><i class="fas fa-file-download"></i><span class="m-1">Aula</span></a>
                                     </div>
                                 </td>
                                 <td>
