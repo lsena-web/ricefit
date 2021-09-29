@@ -5,7 +5,7 @@
                 <h5 class="modal-title text-light" id="staticBackdropLabel">Informação deletada com Sucesso!</h5>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <a href="lista_exercicios.php" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
+                <a href="<?php $_SERVER['PHP_SELF']; ?>" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="home.php" class="text-success">Home</a></li>
                         <li class="breadcrumb-item active">Exercícios</li>
                     </ol>
                 </div>
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="col-auto">
-                    <a href="cadastro_exercicios.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
+                    <a href="cadastroExercicios.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
                 </div>
 
             </div>
@@ -94,7 +94,7 @@
                                 <td>
                                     <div class=" d-flex justify-content-around">
 
-                                        <a href="edit_grupos.php?id=<?php echo $value['id']; ?>" class="btn btn-info m-1">
+                                        <a href="editExercicios.php?id=<?php echo $value['id']; ?>" class="btn btn-info m-1">
                                             <i class="fas fa-edit"></i>
                                             Atualizar
                                         </a>

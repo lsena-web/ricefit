@@ -2,16 +2,16 @@
 
 require_once '../vendor/autoload.php';
 
-$eDao = new \App\Model\ProfessorDao('grupos');
+$con = new \App\Model\Conexao('grupos');
 
-$table = $eDao->read();
+$table = $con->read();
 
 
 // BUSCAR INFORMAÇÃO ANTES DO DELETE INFORMAÇÃO
 if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {
 
     $id = $_GET['del'];
-    $delete = $eDao->read('id= ' . $id);
+    $delete = $con->read('id= ' . $id);
 }
 
 
@@ -19,7 +19,7 @@ if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {
 if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
 
     $id = $_POST['deletar'];
-    $eDao->delete('id= ' . $id); // DELETANDO informação
+    $con->delete('id= ' . $id); // DELETANDO informação
     header('Location:' . $_SERVER['PHP_SELF'] . '?deletado=deletado');
 }
 
@@ -34,7 +34,7 @@ if (isset($_POST['btnClose']) and !empty($_POST['btnClose'])) {
 
 include __DIR__ . '/../includes/admin/header.php';
 include __DIR__ . '/../includes/admin/side.php';
-include __DIR__ . '/../view/admin/lista_grupos.php';
+include __DIR__ . '/../view/admin/listaGrupos.php';
 include __DIR__ . '/../includes/admin/footer.php';
 
 if (!empty($delete)) { ?>

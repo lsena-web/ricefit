@@ -5,7 +5,7 @@
                 <h5 class="modal-title text-light" id="staticBackdropLabel">Cadastro realizada com Sucesso!</h5>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <a href="lista_grupos.php" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
+                <a href="listaGrupos.php" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="" class="text-success">Home</a></li>
                         <li class="breadcrumb-item active">Comissões</li>
                     </ol>
                 </div>
@@ -44,7 +44,7 @@
                             </h3>
                         </div>
                         <div class="col-auto">
-                            <a href="lista_grupos.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>
+                            <a href="listaGrupos.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>
                         </div>
                     </div>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">

@@ -2,53 +2,41 @@
 
 include_once '../vendor/autoload.php';
 
-$p = new \App\Controller\Professor();
-$pDao = new \App\Model\ProfessorDao('admin');
+$con = new \App\Model\Conexao('admin');
 
-$inputs = $pDao->read();
+$inputs = $con->read();
 
 
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
+
+
+    $anexo = [];
 
     $formatosPermitidos = array("png", "jpg", "jpeg", "svg");
     $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);    // EXTENSÃO DO ARQUIVO
 
     if (in_array($extensao, $formatosPermitidos)) {
 
-        $pasta = "admin/";
+        $pasta = "arquivos/";
         $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
         $novoNome = uniqid() . ".$extensao";
-
+        $anexo['anexo'] = $novoNome;
         // UPLOAD
         move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
     }
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    $arquivo = $pDao->read('id= ' . $dados['id']);
-    $pasta = "admin/";
+    $arquivo = $con->read('id= ' . $dados['id']);
+    $pasta = "arquivos/";
 
-    // CASO QUEIRA ATUALIZAR O ARQUIVO
-    if (!empty($novoNome)) {
-        foreach ($arquivo as $v) {
-            unlink($pasta . "/" . $v['anexo']);
-        }
-        $atualizacao = $pDao->update('id= ' . $dados['id'], [
-            'nome'    => $dados['nome'],
-            'email' => $dados['email'],
-            'login' => $dados['login'],
-            'senha' => $dados['senha'],
-            'celular' => $dados['celular'],
-            'anexo'     => $novoNome,
-        ]);
-    } else {
-        $atualizacao = $pDao->update('id= ' . $dados['id'], [
-            'nome'    => $dados['nome'],
-            'email' => $dados['email'],
-            'login' => $dados['login'],
-            'senha' => $dados['senha'],
-            'celular' => $dados['celular'],
-        ]);
-    }
+
+    $atualizacao = $con->update('id= ' . $dados['id'], [
+        'nome'    => $dados['nome'],
+        'email' => $dados['email'],
+        'login' => $dados['login'],
+        'senha' => $dados['senha'],
+        'celular' => $dados['celular']
+    ] + $anexo);
 }
 
 include __DIR__ . '/../includes/admin/header.php';
