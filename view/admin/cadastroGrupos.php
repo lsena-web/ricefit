@@ -24,7 +24,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="" class="text-success">Home</a></li>
-                        <li class="breadcrumb-item active">Comissões</li>
+                        <li class="breadcrumb-item active">Cadastro</li>
                     </ol>
                 </div>
             </div>
@@ -38,12 +38,8 @@
             <div class="col-md-12">
                 <div class="card card-outline card-success">
                     <div class="card-header row">
-                        <div class="col-auto mr-auto">
-                            <h3 class="card-title">
-                                <b>Cadastro</b><i class="fab fa-wpforms text-success ml-2" style="font-size:25px;"></i></a>
-                            </h3>
-                        </div>
-                        <div class="col-auto">
+
+                        <div class="col-auto ml-auto">
                             <a href="listaGrupos.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>
                         </div>
                     </div>

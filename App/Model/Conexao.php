@@ -11,7 +11,7 @@ class Conexao
     const PASS = '';
     private $table;
 
-    public function __construct($table)
+    public function __construct($table = null)
     {
         $this->table = $table;
     }

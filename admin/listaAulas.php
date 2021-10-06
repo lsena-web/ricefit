@@ -5,7 +5,6 @@ require_once '../vendor/autoload.php';
 $con = new \App\Model\Conexao('exercicios');
 
 $table =  $con->read();
-$caminho = "arquivos/exercicios/";
 
 // BUSCAR INFORMAÇÃO ANTES DO DELETE INFORMAÇÃO
 if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {

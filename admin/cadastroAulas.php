@@ -6,7 +6,7 @@ $con = new \App\Model\Conexao('exercicios');
 
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
-    $formatosPermitidos = array("png", "jpge", "jpg", "svg", "mp4", "mkv", "avi", "wmv", "wma", "rmvb", "mov", "3gp", "flv","gif");
+    $formatosPermitidos = array("png", "jpge", "jpg", "svg", "mp4", "mkv", "avi", "wmv", "wma", "rmvb", "mov", "3gp", "flv");
 
     // EXTENSÃO DO ARQUIVO
     $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);

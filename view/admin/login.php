@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../b4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../b4/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="../estilosAdmin/style.css">
+    <link rel="stylesheet" href="../estilosAdmin/css/style.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -48,7 +48,7 @@
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-12">
-                                <button type="submit" name="btnEntrar" value="entrar" class="btn btn-primary btn-block">Entrar</button>
+                                <button type="submit" name="btnEntrar" value="entrar" class="btn btn-success btn-block">Entrar</button>
                             </div>
                             <!-- /.col -->
                         </div>
@@ -56,7 +56,7 @@
                     <div class="d-flex justify-content-end">
                         <div class="mt-2 mx-1">
                             <p>
-                                <a href="forgot-password.html">Recuperar Senha</a>
+                                <a href="forgot-password.html text-success">Recuperar Senha</a>
                             </p>
                         </div>
                     </div>

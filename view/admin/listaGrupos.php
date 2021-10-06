@@ -46,7 +46,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="home.php" class="text-success">Home</a></li>
-                        <li class="breadcrumb-item active">Turmas</li>
+                        <li class="breadcrumb-item active">Listagem</li>
                     </ol>
                 </div>
             </div>
@@ -58,13 +58,7 @@
         <div class="card card-outline card-success">
             <div class="card-header row">
 
-                <div class="col-auto mr-auto">
-                    <h3 class="card-title">
-                        <b>Listagem</b><i class="fas fa-clipboard-list text-success ml-2"></i></a>
-                    </h3>
-                </div>
-
-                <div class="col-auto">
+                <div class="col-auto ml-auto">
                     <a href="cadastroGrupos.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
                 </div>
 
