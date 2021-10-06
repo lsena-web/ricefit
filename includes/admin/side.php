@@ -40,7 +40,7 @@
 
                   <li class="nav-item">
                       <a href="perfil.php" class="nav-link ">
-                          <i class="nav-icon fas fa-user"></i>
+                          <i class="nav-icon fas fa-user-circle"></i>
                           <p>
                               Perfil
                           </p>
@@ -57,6 +57,15 @@
                   </li>
 
                   <li class="nav-item">
+                      <a href="listaAlunos.php" class="nav-link ">
+                          <i class="nav-icon fas fa-user-friends"></i>
+                          <p>
+                              Alunos
+                          </p>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
                       <a href="listaExercicios.php" class="nav-link ">
                           <i class="nav-icon fas fa-dumbbell"></i>
                           <p>
@@ -65,14 +74,6 @@
                       </a>
                   </li>
 
-                  <li class="nav-item">
-                      <a href="listaAulas.php" class="nav-link ">
-                          <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                          <p>
-                              Aulas
-                          </p>
-                      </a>
-                  </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-chart-pie"></i>

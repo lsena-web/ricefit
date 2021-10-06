@@ -60,12 +60,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
-                        <div class="card-header row">
-
-                            <div class="col-auto ml-auto">
-                                <a href="cadastroExercicios.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-auto ml-auto">
+                                    <a href="cadastroExercicios.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
+                                </div>
                             </div>
-
                         </div>
                         <div class="card-body">
 
@@ -87,7 +87,7 @@
                                             <td>
                                                 <div class="d-flex  justify-content-around">
 
-                                                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?pdf=<?php echo $value['id']; ?>" class="btn btn-primary text-bold  m-1"><i class="far fa-file-pdf text-xl"></i> Download</a>
+                                                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?file=<?php echo $value['id']; ?>" class="btn btn-primary text-bold  m-1"><i class="fas fa-file-download text-xl"></i> Download</a>
                                                     <a href="<?php echo $caminho . $value['anexo']; ?>" class="glightbox btn btn-success text-bold  m-1"><i class="far fa-play-circle text-xl"></i> Play</a>
 
                                                 </div>

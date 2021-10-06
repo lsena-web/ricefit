@@ -56,12 +56,12 @@
     <section class="content">
 
         <div class="card card-outline card-success">
-            <div class="card-header row">
-
-                <div class="col-auto ml-auto">
-                    <a href="cadastroGrupos.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-auto ml-auto">
+                        <a href="cadastroGrupos.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
+                    </div>
                 </div>
-
             </div>
             <!-- /.card-header -->
             <div class="card-body">

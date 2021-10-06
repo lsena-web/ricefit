@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Controller;
+
+
+class Geral
+{
+    // METODO RESPONSAVEL POR GERAL MASCARA
+    public function mask($val, $mask)
+    {
+        $maskared = '';
+        $k = 0;
+        for ($i = 0; $i <= strlen($mask) - 1; ++$i) {
+            if ($mask[$i] == '#') {
+                if (isset($val[$k])) {
+                    $maskared .= $val[$k++];
+                }
+            } else {
+                if (isset($mask[$i])) {
+                    $maskared .= $mask[$i];
+                }
+            }
+        }
+
+        return $maskared; //retornar o valor com mascara
+    }
+}

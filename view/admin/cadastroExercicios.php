@@ -37,9 +37,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-success">
-                    <div class="card-header row">
-                        <div class="col-auto ml-auto">
-                            <a href="listaExercicios.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-auto ml-auto">
+                                <a href="listaExercicios.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -65,14 +67,14 @@
 
                                         <div class="col-lg-5 col-md-6 mb-3">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" required >
+                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" required>
                                                 <label class="custom-file-label" for="customFile"><i class="fas fa-photo-video"></i></label>
                                             </div>
                                             <b><span>Formatos: Videos, Imagens</span><i class="fas fa-photo-video ml-2"></i></b>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 mb-3">
-                                            <textarea name="descricao" id="summernote" cols="30" rows="10" required>
+                                            <textarea name="descricao" id="summernote2" cols="30" rows="10" required>
                                             <?php if (isset($_SESSION['value_narrativa']) && !empty($_SESSION['value_narrativa'])) {
                                                 echo  $_SESSION['value_narrativa'];
                                                 unset($_SESSION['value_narrativa']);

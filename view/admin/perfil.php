@@ -36,11 +36,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-success">
-                    <div class="card-header row justify-content-end">
-                        <div class="col-auto">
-                            <h3 class="card-title">
-                                <b>Atualização</b><i class="fas fa-edit text-success ml-2" style="font-size:25px;"></i></a>
-                            </h3>
+                    <div class="card-header justify-content-end">
+                        <div class="row">
+                            <div class="col-auto ml-auto">
+                                <h3 class="card-title">
+                                    <b>Atualização</b><i class="fas fa-edit text-success ml-2" style="font-size:25px;"></i></a>
+                                </h3>
+                            </div>
                         </div>
                     </div>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">

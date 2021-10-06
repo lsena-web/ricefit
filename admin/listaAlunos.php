@@ -2,9 +2,11 @@
 
 require_once '../vendor/autoload.php';
 
-$con = new \App\Model\Conexao('exercicios');
+$con = new \App\Model\Conexao('alunos');
+$geral = new \App\Controller\Geral();
 
 $table =  $con->read();
+$caminho = "arquivos/alunos/";
 
 // BUSCAR INFORMAÇÃO ANTES DO DELETE INFORMAÇÃO
 if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {
@@ -19,7 +21,7 @@ if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
     $id = $_POST['deletar'];
     $arquivo = $con->read('id=' . $id);
 
-    $pasta = "arquivos/exercicios/";
+    $pasta = "arquivos/alunos/";
     if (!empty($arquivo)) { // DELETANDO ARQUIVO
         foreach ($arquivo as $v) {
             unlink($pasta . "/" . $v['anexo']);
@@ -40,7 +42,7 @@ if (isset($_POST['btnClose']) and !empty($_POST['btnClose'])) {
 // forçando download
 if (isset($_GET['file']) and !empty($_GET['file']) and is_numeric($_GET['file'])) {
 
-    $pasta = "arquivos/exercicios/";
+    $pasta = "arquivos/alunos/";
     $id = addslashes($_GET['file']);
     $dados = $con->read('id=' . $id);
 
@@ -55,7 +57,7 @@ if (isset($_GET['file']) and !empty($_GET['file']) and is_numeric($_GET['file'])
         if (file_exists($local_arquivo)) {
             header('Content-Type: application/octet-stream');
             header('Content-Description: File Transfer');
-            header('Content-Disposition: attachment; filename=' . basename('aula.' . $extensao));
+            header('Content-Disposition: attachment; filename=' . basename('aluno.' . $extensao));
             header('expires:0');
             header('Cache-control: must-revalidate');
             header('Pragma: public');
@@ -71,7 +73,7 @@ if (isset($_GET['file']) and !empty($_GET['file']) and is_numeric($_GET['file'])
 
 include __DIR__ . '/../includes/admin/header.php';
 include __DIR__ . '/../includes/admin/side.php';
-include __DIR__ . '/../view/admin/listaExercicios.php';
+include __DIR__ . '/../view/admin/listaAlunos.php';
 include __DIR__ . '/../includes/admin/footer.php';
 
 if (!empty($delete)) { ?>

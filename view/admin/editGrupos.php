@@ -37,11 +37,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-success">
-                    <div class="card-header row">
-             
-                        <div class="col-auto ml-auto">
-                            <a href="listaGrupos.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-auto ml-auto">
+                                <a href="listaGrupos.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>
+                            </div>
                         </div>
+
                     </div>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                         <!-- /.card-header -->
