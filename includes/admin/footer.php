@@ -52,8 +52,23 @@
 <script src="../b4/dist/js/pages/dashboard.js"></script>
 <!-- gligthbox -->
 <script src="../b4/plugins/glightbox/js/glightbox.min.js"></script>
-<!-- script -->
+<!-- Carregar biblioteca FilePond -->
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<!-- Transforme todos os elementos de entrada de arquivo em lagoas -->
+<script src="../plugins/filepond/dist/filepond.js"></script>
+<script src="../plugins/mascara/mascara.js"></script>
+<!-- configs -->
 <script src="../estilosAdmin/js/script.js"></script>
+<script>
+  // Get a reference to the file input element
+  const inputElement = document.querySelector('input[type="file"]');
+
+  // Create a FilePond instance
+  const pond = FilePond.create(inputElement);
+  pond.setOptions({
+    labelIdle: `Arraste e solte seus arquivos ou <span class="filepond--label-action">navegue</span>`,
+  });
+</script>
 </body>
 
 </html>

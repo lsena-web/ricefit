@@ -18,6 +18,10 @@ class Conexao
 
     public static $connect;
 
+    /**
+     * Método responsável por conexão com o banco de dados 
+     * return getMessage();
+     */
     public static function getConn()
     {
         try {
@@ -32,7 +36,11 @@ class Conexao
             echo '</pre>';
         }
     }
-
+    /**
+     * Método responsável por cadastrar informações
+     * @param array
+     * return int
+     */
     public function create($values)
     {
 
@@ -41,9 +49,13 @@ class Conexao
         $sql = "INSERT INTO " . '' . $this->table . ' (' . implode(',', $fields) . ') VALUES (' . implode(',', $binds) . ')';
         $stmt = self::getConn()->prepare($sql);
         $stmt->execute(array_values($values));
-        return $stmt;
+        return self::$connect->lastInsertId();
     }
-
+    /**
+     * Método responsável por retornar consulta
+     * @param string
+     * return array
+     */
     public function read($where = null)
     {
         $where = strlen($where) ? ' WHERE ' . $where    : ' '; // SE EU TIVER CONTEÚDO NESSA VARIAVEL FAÇA "ISSO" SENÃO FAÇA "AQUILO"
@@ -57,24 +69,49 @@ class Conexao
         return $dados;
     }
 
+    /**
+     * Método responsável por atualizar informações
+     * @param string
+     * @param array
+     * return boolean
+     */
     public function update($where, $values)
     {
         $fields = array_keys($values);
         $sql = 'UPDATE ' . $this->table . ' SET ' . implode('=?,', $fields) . '=?' . '  WHERE ' . $where . ' ';
         $stmt = self::getConn()->prepare($sql);
         $stmt->execute(array_values($values));
-        return $stmt;
+        if ($stmt->rowCount() != 0) {
+            $dados = true;
+        } else {
+            $dados = false;
+        }
+        return $dados;
     }
 
+    /**
+     * Método responsável por deletar informações
+     * @param string
+     * return boolean
+     */
     public function delete($where)
     {
-        //monta a sql
         $sql = 'DELETE  FROM ' . $this->table . ' WHERE ' . $where . ' ';
         $stmt = self::getConn()->query($sql);
-        return $stmt;
+        if ($stmt->rowCount() != 0) {
+            $dados = true;
+        } else {
+            $dados = false;
+        }
+        return $dados;
     }
 
-    // METODO RESPONSAVEL POR BUSCAR INFORMAÇÕES DISTINTAS
+    /**
+     * Método responsável por retornar consulta sem repetição de informações
+     * @param string
+     * @param string
+     * return array
+     */
     public function readDistinto($column, $where = null)
     {
         $where = strlen($where) ? ' WHERE ' . $where    : ' '; // SE EU TIVER CONTEÚDO NESSA VARIAVEL FAÇA "ISSO" SENÃO FAÇA "AQUILO"

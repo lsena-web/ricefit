@@ -3,6 +3,7 @@
 require_once '../vendor/autoload.php';
 
 $con = new \App\Model\Conexao('alunos');
+
 $geral = new \App\Controller\Geral();
 
 $table =  $con->read();

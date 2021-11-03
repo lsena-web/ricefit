@@ -1,9 +1,10 @@
 <?php
 
+use App\Controller\Geral; // mascara
+
 include_once '../vendor/autoload.php';
 
 $con = new \App\Model\Conexao('admin');
-
 $inputs = $con->read();
 $alertaArquivo  = '';
 
@@ -30,17 +31,22 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
             $alertaArquivo  = 'Arquivo Inválido! Escolha um arquivo com formato permitido.';
         }
     }
+    if (isset($dados['senha']) && !empty($dados['senha'])) {
+        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        $senha = addslashes($dados['senha']);
+        $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
+
+        $anexo['senha'] = $senhaSegura;
+    }
 
     if (empty($alertaArquivo)) {
         $arquivo = $con->read('id= ' . $dados['id']);
         $pasta = "arquivos/perfil/";
 
-
+        $senhaSegura = password_hash($dados['senha'], PASSWORD_DEFAULT);
         $atualizacao = $con->update('id= ' . $dados['id'], [
             'nome'    => $dados['nome'],
             'email' => $dados['email'],
-            'login' => $dados['login'],
-            'senha' => $dados['senha'],
             'celular' => $dados['celular']
         ] + $anexo);
     }

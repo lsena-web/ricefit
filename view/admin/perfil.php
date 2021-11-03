@@ -1,4 +1,7 @@
 <?php
+
+use App\Controller\Geral;
+
 $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning text-bold m-1">' . $alertaArquivo . '</div>' : '';
 ?>
 <div class="modal fade" id="modalSucesso" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -64,34 +67,24 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                         </div>
 
                                         <div class="col-lg-5 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="login" placeholder="LOGIN" required autocomplete="off" value="<?php echo $inputs[0]['login']; ?>">
+                                            <input class="form-control form-control-lg" type="email" name="email" placeholder="E-MAIL" required autocomplete="off" value="<?php echo $inputs[0]['email']; ?>">
                                         </div>
 
                                         <div class="col-lg-7 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="email" placeholder="E-MAIL" required autocomplete="off" value="<?php echo $inputs[0]['email']; ?>">
+                                            <input class="form-control form-control-lg" type="text" name="celular" placeholder="CELULAR" data-js="phone" required autocomplete="off" value="<?php echo Geral::mask($inputs[0]['celular'], '(##) #.####-####'); ?>">
                                         </div>
 
                                         <div class="col-lg-5 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="senha" placeholder="SENHA" required autocomplete="off" value="<?php echo $inputs[0]['senha']; ?>">
+                                            <input class="form-control form-control-lg" type="password" name="senha" placeholder="SENHA" autocomplete="off">
                                         </div>
 
-                                        <div class="col-lg-7 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="celular" placeholder="CELULAR" required autocomplete="off" value="<?php echo $inputs[0]['celular']; ?>">
-                                        </div>
-
-                                        <div class="col-lg-5 col-md-6 mb-3">
-                                            <div class="custom-file mt-1">
-                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" accept="image/*">
-                                                <label class="custom-file-label" for="customFile">Escolha uma Imagem de Perfil</label>
-                                            </div>
+                                        <!-- Vamos transformar esta entrada em uma lagoa -->
+                                        <div class="col-12">
+                                            <input type="file" class=" filepond" name="arquivo" accept="image/*">
                                             <b><span>Formatos Permitidos: PNG, JPG, JPEG, SVG</span><i class="far fa-images ml-2"></i></b>
                                         </div>
 
-
                                     </div>
-
-
-
                                 </div>
                             </div>
 

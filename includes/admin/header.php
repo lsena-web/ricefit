@@ -26,6 +26,17 @@
     <link rel="stylesheet" href="../b4/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- summernote -->
     <link rel="stylesheet" href="../b4/plugins/summernote/summernote-bs4.min.css">
+    <!-- estilo do calendario -->
+    <link rel="stylesheet" href="../b4/plugins/calendario/lib/main.css">
+    <!-- configs do calendario -->
+    <script src='../b4/plugins/calendario/lib/main.js'></script>
+    <script src='../b4/plugins/calendario/lib/locales/pt-br.js'></script>
+    <script src="../b4/plugins/calendario/js/script.js"></script>
+    <!-- Filepond stylesheet -->
+    <link href="../plugins/filepond/dist/filepond.css" rel="stylesheet" />
+    <!-- style -->
+    <link href="../estilosAdmin/css/style.css" rel="stylesheet" />
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

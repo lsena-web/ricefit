@@ -5,8 +5,13 @@ namespace App\Controller;
 
 class Geral
 {
-    // METODO RESPONSAVEL POR GERAL MASCARA
-    public function mask($val, $mask)
+    /**
+     * Método responsavel por aplicar mascara
+     * @param string
+     * @param string
+     * return string
+     */
+    public static function mask($val, $mask)
     {
         $maskared = '';
         $k = 0;

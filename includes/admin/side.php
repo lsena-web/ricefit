@@ -1,16 +1,20 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <?php
+        $infoPerfil = new \App\Model\Conexao('admin');
+        $perfil = $infoPerfil->read();
 
-
+        // as informações virão da sessão
+        ?>
       <!-- Sidebar -->
       <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image">
-                  <img src="../b4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                  <img src="arquivos/perfil/<?= $perfil[0]['anexo'] ?>" class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
-                  <a href="#" class="d-block">Lucas Sena</a>
+                  <a href="home.php" class="d-block"><?= $perfil[0]['nome'] ?></a>
               </div>
           </div>
 
@@ -61,6 +65,15 @@
                           <i class="nav-icon fas fa-user-friends"></i>
                           <p>
                               Alunos
+                          </p>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a href="listaAlunos.php" class="nav-link ">
+                          <i class="nav-icon fas fa-clipboard-list"></i>
+                          <p>
+                              Avaliações
                           </p>
                       </a>
                   </li>
