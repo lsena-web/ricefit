@@ -50,6 +50,8 @@
 <script src="../b4/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../b4/dist/js/pages/dashboard.js"></script>
+<!-- SweetAlert2 -->
+<script src="../b4/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- gligthbox -->
 <script src="../b4/plugins/glightbox/js/glightbox.min.js"></script>
 <!-- Carregar biblioteca FilePond -->

@@ -1,5 +1,13 @@
 $(function() {
 
+    // configurações do toast SweetAlert2 Examples
+    document.Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
     $("#example1").DataTable({
         "responsive": true,
         "lengthChange": false,
@@ -49,8 +57,10 @@ $(function() {
     /**
      * Initiate  glightbox 
      */
-    const glightbox = GLightbox({
+    document.glightbox = GLightbox({
         selector: '.glightbox'
     });
 
-})()
+
+
+})

@@ -5,6 +5,7 @@ use App\Session\Login;
 
 Login::init();
 
+// ID DO ALUNO ARMAZENADO EM UM SESSÃO
 if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     $_SESSION['id'] = $_GET['id'];
 }
@@ -23,13 +24,14 @@ if (isset($_POST['btnCadastro']) && !empty($_POST['btnCadastro'])) {
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    // convertendo datas para o formato do banco de dados  dateTime
+    // CONVERTENDO DATAS PARA O FORMATO DO BANCO DE DADOS
     $conversorStart = str_replace('/', '-', $dados['start']);
     $start = date("Y-m-d H:i:s", strtotime($conversorStart));
 
     $conversorEnd = str_replace('/', '-', $dados['end']);
     $end = date("Y-m-d H:i:s", strtotime($conversorEnd));
 
+    // CADASTRANDO INFORMAÇÕES
     $cadastro = $con->create([
         'idAluno'   => $dados['idAluno'],
         'titulo'    => $dados['titulo'],
@@ -41,25 +43,33 @@ if (isset($_POST['btnCadastro']) && !empty($_POST['btnCadastro'])) {
     ]);
 }
 
-// UPDATE
+// ATUALIZAÇÃO
 if (isset($_POST['btnEditar']) && !empty($_POST['btnEditar'])) {
+
+    $anexo = [];
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    // convertendo datas para o formato do banco de dados  dateTime
+    // CONVERTENDO DATAS PARA O FORMATO DO BANCO DE DADOS
     $conversorStart = str_replace('/', '-', $dados['inicio']);
     $start = date("Y-m-d H:i:s", strtotime($conversorStart));
 
     $conversorEnd = str_replace('/', '-', $dados['fim']);
     $end = date("Y-m-d H:i:s", strtotime($conversorEnd));
 
-    $i->setTitulo($dados['titulo']);
-    $i->setCor($dados['cor']);
-    $i->setInicio($start);
-    $i->setFim($end);
-    $i->setiD($dados['codigo']);
+    // VERIFICANDO SE O EXERCICIO FOI ATUALIZADO
+    if (isset($dados['exercicio']) && !empty($dados['exercicio'])) {
+        $anexo['exercicio'] = $dados['exercicio'];
+    }
 
-    $update = $iDao->updateEventosCalendario($i);
+    // ATUALIZANDO INFORMAÇÕES
+    $atualizacao = $con->update('id= ' . $dados['codigo'], [
+        'titulo'    => $dados['titulo'],
+        'cor'       => $dados['cor'],
+        'descricao' => $dados['descricao'],
+        'inicio'    => $start,
+        'fim'       => $end,
+    ] + $anexo);
 }
 
 
@@ -67,14 +77,16 @@ if (isset($_POST['btnEditar']) && !empty($_POST['btnEditar'])) {
 if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {
 
     $id = $_GET['del'];
-    $delete = $iDao->readEventosCalendarioId($id);
+    $delete = $con->read('id= ' . $id);
 }
 
 // DELETAR INFORMAÇÃO
 if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
 
     $id = $_POST['deletar'];
-    $iDao->deleteEventosCalendario($id); // DELETANDO informação
+    $arquivo = $con->read('id=' . $id);
+
+    $deletado = $con->delete('id= ' . $id); // DELETANDO informação
 
     header('Location:' . $_SERVER['PHP_SELF'] . '?deletado=deletado');
 }
@@ -85,28 +97,34 @@ if (isset($_POST['btnClose']) and !empty($_POST['btnClose'])) {
     header('Location:' . $_SERVER['PHP_SELF']);
 }
 
-
+// INCLUDES
 include __DIR__ . '/../includes/admin/header.php';
 include __DIR__ . '/../includes/admin/side.php';
 include __DIR__ . '/../view/admin/horario.php';
 include __DIR__ . '/../includes/admin/footer.php';
 
+// CHAMANDO MODAL CONFIRMANDO O CADASTRO
 if (isset($cadastro) && !empty($cadastro)) {
     echo "<script> $('#modalSucesso').modal('show'); </script>";
 }
 
-if (isset($update)) { ?>
-    <script>
-        $('#modalEdit').modal('show');
-    </script>
-<?php  }
-if (!empty($delete)) { ?>
-    <script>
-        $('#modalDel').modal('show');
-    </script>
-<?php }
-if (isset($_GET['deletado']) and !empty($_GET['deletado'])) { ?>
-    <script>
-        $('#modalDelSucesso').modal('show');
-    </script>
-<?php  } ?>
+// CHAMANDO MODAL CONFIRMANDO A ATUALIZAÇÃO
+if (isset($atualizacao) && !empty($atualizacao)) {
+    echo "<script> $('#modalEdit').modal('show'); </script>";
+}
+
+// CHAMANDO MODAL DE CONFIRMAÇÃO DE DELETE
+if (!empty($delete)) {
+    echo "<script> $('#modalDel').modal('show'); </script>";
+}
+
+// CHAMANDO TOAST CONFIRMANDO O DELETE
+if (isset($_GET['deletado']) && !empty($_GET['deletado'])) {
+
+    echo
+    "<script>
+        $(function() {
+            document.Toast.fire({icon: 'success',title: ' Informação deletada com suscesso!'}); 
+        });
+     </script>";
+}

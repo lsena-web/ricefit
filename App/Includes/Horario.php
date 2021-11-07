@@ -13,24 +13,28 @@ class Horario
 
         foreach ($horarios as $horario) {
 
-            $id = $horario['id'];
-            $idAluno = $horario['idAluno'];
-            $title = $horario['titulo'];
-            $color = $horario['cor'];
-            $exercise = $horario['exercicio'];
-            $description = $horario['descricao'];
-            $start = $horario['inicio'];
-            $end = $horario['fim'];
+            $id             = $horario['id'];
+            $idAluno        = $horario['idAluno'];
+            $title          = $horario['titulo'];
+            $color          = $horario['cor'];
+            $anexo          = $horario['anexo'];
+            $exercise       = $horario['exercicio']; // ID DO EXERCICIO
+            $nome           = $horario['nome']; // NOME DO EXERCICIO
+            $description    = $horario['descricao'];
+            $start          = $horario['inicio'];
+            $end            = $horario['fim'];
 
             $horariosFormatados[] = [
-                'id' => $id,
-                'idAluno' => $idAluno,
-                'title' => $title,
-                'color' => $color,
+                'id'        => $id,
+                'idAluno'   => $idAluno,
+                'title'     => $title,
+                'color'     => $color,
                 'exercicio' => $exercise,
+                'nome'      => $nome,
+                'anexo'     => "arquivos/exercicios/" . $anexo,
                 'descricao' => $description,
-                'start' => $start,
-                'end' => $end,
+                'start'     => $start,
+                'end'       => $end,
             ];
         }
         return json_encode($horariosFormatados);

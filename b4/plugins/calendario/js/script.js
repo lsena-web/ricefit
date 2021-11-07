@@ -17,60 +17,54 @@ document.addEventListener('DOMContentLoaded', function() {
             return {
                 cachebuster: new Date().valueOf()
             };
+
         },
         eventClick: function(info) {
             // o event click serve para vc clicar no evento
+            // console.log(info.event); // verifica informacoes do event
 
             // chamando modal
             var mod = new bootstrap.Modal(document.querySelector("#visualizar"));
             mod.show();
 
-            // enviando informações para o modal
-            var cod = document.querySelector("#id");
-            cod.textContent = (info.event.id);
+            // enviando informações para o modal vizualizar
+            document.querySelector("#id").textContent = (info.event.id);
+            document.querySelector("#title").textContent = (info.event.title);
+            document.querySelector("#start").textContent = (info.event.start.toLocaleString());
+            document.querySelector("#end").textContent = (info.event.end.toLocaleString());
+            document.querySelector("#descricao").value = info.event.extendedProps['descricao'];
+            document.querySelector("#linkVideo").href = info.event.extendedProps['anexo'];
 
-            // var cod = document.querySelector("#idAluno");
-            // cod.textContent = (info.event.id);
-
-            var title = document.querySelector("#title");
-            title.textContent = (info.event.title);
-
-            // var cod = document.querySelector("#exercicio");
-            // cod.textContent = (info.event.id);
-
-            // var cod = document.querySelector("#descricao");
-            // cod.textContent = (info.event.descricao);
-
-            var start = document.querySelector("#start");
-            start.textContent = (info.event.start.toLocaleString());
-
-            var end = document.querySelector("#end");
-            end.textContent = (info.event.end.toLocaleString());
-
-            document.querySelector("#apagarEvento").value = (info.event.id);
-
+            document.glightbox.reload(); // ATUALIZANDO O GLIGHTBOX PARA O CAMINHO DO VIDEO SEJA ARMAZENADO NO MESMO
 
             // estou fazendo isso quando for abrir o evento sem ter que mostrar a div editar
             let inform = document.getElementById("inform");
             let edit = document.getElementById("editar");
 
-
             // se contem a class hide da um toggle ou seja a classe sai;....        hide está no stile.css
             if (inform.classList.contains("hide")) {
                 inform.classList.toggle("hide");
             }
+
             // se não contem hide da um toggle
             if (!edit.classList.contains("hide")) {
                 edit.classList.toggle("hide");
             }
 
-            // informando valores para os inputs de edição
+            // informando valores para modal atualizar
             document.querySelector("#codigo").value = info.event.id;
             document.querySelector("#titulo").value = info.event.title;
+            document.querySelector("#nomeExercicio").textContent = info.event.extendedProps['nome'];
             document.querySelector("#cor").value = info.event.backgroundColor;
+            document.querySelector("#editDescricao").value = info.event.extendedProps['descricao'];
             document.querySelector("#inicio").value = info.event.start.toLocaleString();
             document.querySelector("#fim").value = info.event.end.toLocaleString();
+
+            // informando ID para deletar
+            document.querySelector("#apagarEvento").value = (info.event.id);
+
         },
+
         // deixa os quadrados do full calendar clicaveis
         selectable: true,
         select: function(info) {
@@ -82,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         }
 
-    });
 
+    });
     calendar.render();
 });
 

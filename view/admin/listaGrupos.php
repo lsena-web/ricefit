@@ -77,8 +77,8 @@
 
                         <?php foreach ($table as $value) { ?>
                             <tr>
-                                <td class="text-center text-bold text-xl"><?php echo $value['nome']; ?></td>
-                                <td class="text-center text-bold text-xl"><?php if ($value['condicao'] == 's') {
+                                <td class="text-center text-bold text-lg"><?php echo $value['nome']; ?></td>
+                                <td class="text-center text-bold text-lg"><?php if ($value['condicao'] == 's') {
                                                                                 echo 'ATIVO';
                                                                             } else {
                                                                                 echo 'INATIVO';

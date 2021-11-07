@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="../home/home.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="../home/home.php" class="text-success">Home</a></li>
                         <li class="breadcrumb-item active">Calendário</li>
                     </ol>
                 </div>
@@ -106,7 +106,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <h5 class="modal-title" id="exampleModalLabel">Detalhes do Evento</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><span class="" id="title"></span></h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -114,9 +114,8 @@
             <div class="modal-body">
                 <div class="informacao" id="inform">
                     <dl class="row">
-
-                        <div class="col-lg-g col-md-6">
-                            <div><span class="text-bold">Título:</span> <span class="" id="title"></span></div>
+                        <div class="col-lg-6 col-md-6 mb-2">
+                            <div><a href="" id="linkVideo" class="glightbox btn btn-lg btn-success btn-block"><i class="far fa-play-circle text-lg text-bold"></i></a></div>
                         </div>
                         <div class="col-lg-g col-md-6">
                             <div><span class="text-bold">Inicio:</span> <span class="" id="start"></span></div>
@@ -129,7 +128,7 @@
 
                         <div class="col-12 p-0">
                             <div class="form-group">
-                                <textarea class="form-control" rows="3" name="descricao" disabled></textarea>
+                                <textarea class="form-control" rows="3" id="descricao" name="descricao" disabled></textarea>
                             </div>
                         </div>
                     </dl>
@@ -155,30 +154,65 @@
                             <input type="text" class="form-control" id="titulo" name="titulo" required autocomplete="off">
                         </div>
 
-
-                        <div class="mb-3">
-                            <div class="form-group">
-                                <label>Example select</label>
-                                <select class="form-control" name="cor" id="cor" required>
-                                    <option selected disabled value=""></option>
-                                    <option class="bg-warning text-bold" value="#ffc107">Amarelo</option>
-                                    <option class="bg-danger text-bold" value="#dc3545">Vermelho</option>
-                                    <option class="bg-primary text-bold" value="#007bff">Azul</option>
-                                    <option class="bg-info text-bold" value="#17a2b8">Cyan</option>
-                                    <option class="bg-success text-bold" value="#28a745">Verde</option>
-                                    <option class="bg-secondary text-bold" value="#6c757d">Cinza</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label>Exercício:</label>
+                                        <select class="form-control" name="exercicio">
+                                            <option selected disabled value="" id="nomeExercicio"></option>
+                                            <?php if (!empty($exercicios)) {
+                                                foreach ($exercicios as $exercicio) {   ?>
+                                                    <option class="text-bold" value="<?= $exercicio['id'] ?>"><?= $exercicio['nome'] ?></option>
+                                            <?php }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label>Cor</label>
+                                        <select class="form-control" name="cor" id="cor" required>
+                                            <option selected disabled value=""></option>
+                                            <option class="bg-warning text-bold" value="#ffc107">Amarelo</option>
+                                            <option class="bg-danger text-bold" value="#dc3545">Vermelho</option>
+                                            <option class="bg-primary text-bold" value="#007bff">Azul</option>
+                                            <option class="bg-info text-bold" value="#17a2b8">Cyan</option>
+                                            <option class="bg-success text-bold" value="#28a745">Verde</option>
+                                            <option class="bg-secondary text-bold" value="#6c757d">Cinza</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Inicio do Envento</label>
-                            <input type="text" class="form-control" id="inicio" name="inicio" onkeypress="DataHora(event, this)" required autocomplete="off">
+                        <div class="row">
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Inicio do Envento</label>
+                                    <input type="text" class="form-control" id="inicio" name="inicio" onkeypress="DataHora(event, this)" required autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Termino do Evento</label>
+                                    <input type="text" class="form-control" id="fim" name="fim" onkeypress="DataHora(event, this)" required autocomplete="off">
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Termino do Evento</label>
-                            <input type="text" class="form-control" id="fim" name="fim" onkeypress="DataHora(event, this)" required autocomplete="off">
+
+                        <div class="col-12 p-0">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" id="editDescricao" name="descricao" placeholder="Descrição..." required></textarea>
+                            </div>
                         </div>
 
 
@@ -210,7 +244,7 @@
             <div class="modal-body">
                 <form id="addenvent" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-                    <input type="hidden" name="idAluno" value="<?= $_GET['id'] ?>">
+                    <input type="hidden" name="idAluno" value="<?= $_SESSION['id'] ?>">
 
                     <div class="mb-3">
                         <label class="form-label">Título</label>

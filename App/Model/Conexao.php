@@ -124,4 +124,18 @@ class Conexao
         }
         return $dados;
     }
+
+    public function readHorarios($id)
+    {
+        $sql = "SELECT horarios.*, exercicios.anexo, exercicios.nome FROM horarios, exercicios WHERE idAluno = ? AND horarios.exercicio = exercicios.id";
+        $stmt = self::getConn()->prepare($sql);
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+        if ($stmt->rowCount() == true) {
+            $dados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } else {
+            $dados = [];
+        }
+        return $dados;
+    }
 }

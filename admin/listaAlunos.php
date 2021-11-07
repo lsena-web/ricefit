@@ -7,6 +7,7 @@ $con = new \App\Model\Conexao('alunos');
 $geral = new \App\Controller\Geral();
 
 $table =  $con->read();
+
 $caminho = "arquivos/alunos/";
 
 // BUSCAR INFORMAÇÃO ANTES DO DELETE INFORMAÇÃO

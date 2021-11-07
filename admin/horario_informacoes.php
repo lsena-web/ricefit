@@ -13,7 +13,7 @@ $con = new \App\Model\Conexao('horarios');
 $horarios = new \App\Includes\Horario;
 
 // buscas informações do calendário pelo o id do usuário
-$calendario = $con->read('idAluno = ' . $_SESSION['id']);
+$calendario = $con->readHorarios($_SESSION['id']);
 
 // informando dados do usuário
 echo $horarios->format($calendario);
