@@ -1,5 +1,8 @@
 <?php
-$alertaLogin     = strlen($alertaLogin)    ? '<div class= "alert alert-danger text-bold m-1">' . $alertaLogin . '</div>' : '';
+
+use App\Controller\Geral;
+
+$alertaEmail     = strlen($alertaEmail)    ? '<div class= "alert alert-danger text-bold m-1">' . $alertaEmail . '</div>' : '';
 $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning text-bold m-1">' . $alertaArquivo . '</div>' : '';
 ?>
 <div class="modal fade" id="modalSucesso" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -48,7 +51,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                     </div>
 
                     <?= $alertaArquivo ?>
-                    <?= $alertaLogin ?>
+                    <?= $alertaEmail ?>
                     <?php if (isset($infoInputs) && !empty($infoInputs)) { ?>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                             <!-- /.card-header -->
@@ -63,22 +66,18 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                             </div>
 
                                             <div class="col-lg-5 col-md-6 mb-3">
-                                                <input class="form-control form-control-lg" type="text" name="login" minlength="10" placeholder="Login" required autocomplete="off" value="<?= $infoInputs[0]['login'] ?>">
+                                                <input class="form-control form-control-lg" type="text" name="celular" minlength="11" placeholder="Celular" required autocomplete="off" data-js="phone" value="<?php echo Geral::mask($infoInputs[0]['celular'], '(##) #.####-####'); ?>">
                                             </div>
 
                                             <div class="col-lg-7 col-md-6 mb-3">
                                                 <input class="form-control form-control-lg" type="text" name="email" placeholder="E-mail" required autocomplete="off" value="<?= $infoInputs[0]['email'] ?>">
                                             </div>
 
-                                            <div class="col-lg-5 col-md-6 mb-3">
+                                            <div class="col-lg-2 col-md-6 mb-3">
                                                 <input class="form-control form-control-lg" type="text" name="senha" minlength="8" placeholder="Senha" autocomplete="off">
                                             </div>
 
-                                            <div class="col-lg-7 col-md-6 mb-3">
-                                                <input class="form-control form-control-lg" type="text" name="celular" minlength="11" placeholder="Celular" required autocomplete="off" value="<?= $infoInputs[0]['celular'] ?>">
-                                            </div>
-
-                                            <div class="col-lg-5 col-md-6 mb-3">
+                                            <div class="col-lg-3 col-md-6 mb-3">
                                                 <select class="custom-select custom-select-lg " name="turma" required>
                                                     <option selected value="<?= $infoInputs[0]['turma'] ?>"><?= $infoInputs[0]['turma'] ?></option>
                                                     <?php if (isset($gp)) {
@@ -89,18 +88,21 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                                 </select>
                                             </div>
 
-                                            <div class="col-lg-12 mb-3">
+                                            <div class="col-lg-12 col-md-12 mb-3">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" name="arquivo" id="customFile" accept="image/*">
-                                                    <label class="custom-file-label" for="customFile"><i class="fas fa-image"></i></label>
+                                                    <label class="custom-file-label text-bold" for="customFile">IMAGEM</label>
                                                 </div>
-                                                <b><span>Formatos: Imagens</span><i class="fas fa-image ml-2"></i></b>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="callout callout-success">
+                                                    <h5 class="text-bold text-success">Formatos Permitidos:</h5>
+                                                    <p>PNG, JPG, JPEG, SVG <i class="far fa-images ml-2"></i></p>
+                                                </div>
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 mb-3">
-                                                <textarea name="descricao" id="summernote2" cols="30" rows="10" required>
-                                                <?= $infoInputs[0]['descricao'] ?>
-                                            </textarea>
+                                                <textarea name="descricao" id="summernote2" cols="30" rows="10" required><?= $infoInputs[0]['descricao'] ?></textarea>
                                                 <b>Descrição <i class="fas fa-edit"></i></b>
                                             </div>
 

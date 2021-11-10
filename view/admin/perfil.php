@@ -78,12 +78,18 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                             <input class="form-control form-control-lg" type="password" name="senha" placeholder="SENHA" autocomplete="off">
                                         </div>
 
-                                        <!-- Vamos transformar esta entrada em uma lagoa -->
-                                        <div class="col-12">
-                                            <input type="file" class=" filepond" name="arquivo" accept="image/*">
-                                            <b><span>Formatos Permitidos: PNG, JPG, JPEG, SVG</span><i class="far fa-images ml-2"></i></b>
+                                        <div class="col-lg-12 col-md-12 mb-3">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" accept="image/*">
+                                                <label class="custom-file-label text-bold" for="customFile">IMAGEM</label>
+                                            </div>
                                         </div>
-
+                                        <div class="col-lg-12 col-md-12 mb-3">
+                                            <div class="callout callout-success">
+                                                <h5 class="text-bold text-success">Formatos Permitidos:</h5>
+                                                <p>PNG, JPG, JPEG, SVG <i class="far fa-images ml-2"></i></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

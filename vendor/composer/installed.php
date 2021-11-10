@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ef3dc4c09bf2d722f87c669ed575d106c171ed76',
+        'reference' => '295ba9a48e88fd7b9b2cb5a52a4958719302b541',
         'name' => 'rice/ricefit',
         'dev' => true,
     ),
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../dompdf/dompdf',
             'aliases' => array(),
             'reference' => '8768448244967a46d6e67b891d30878e0e15d25c',
+            'dev_requirement' => false,
+        ),
+        'kartik-v/bootstrap-fileinput' => array(
+            'pretty_version' => 'v5.2.6',
+            'version' => '5.2.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kartik-v/bootstrap-fileinput',
+            'aliases' => array(),
+            'reference' => '642849327db63231922558b580e985e27beddfc1',
             'dev_requirement' => false,
         ),
         'phenx/php-font-lib' => array(
@@ -61,7 +70,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ef3dc4c09bf2d722f87c669ed575d106c171ed76',
+            'reference' => '295ba9a48e88fd7b9b2cb5a52a4958719302b541',
             'dev_requirement' => false,
         ),
         'sabberworm/php-css-parser' => array(

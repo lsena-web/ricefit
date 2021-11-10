@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInita366352ff7d821e7978ab7b18e0e4b24
 {
     public static $prefixLengthsPsr4 = array (
+        'k' => 
+        array (
+            'kartik\\plugins\\fileinput\\' => 25,
+        ),
         'S' => 
         array (
             'Svg\\' => 4,
@@ -30,6 +34,10 @@ class ComposerStaticInita366352ff7d821e7978ab7b18e0e4b24
     );
 
     public static $prefixDirsPsr4 = array (
+        'kartik\\plugins\\fileinput\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/bootstrap-fileinput',
+        ),
         'Svg\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',

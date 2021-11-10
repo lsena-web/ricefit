@@ -100,11 +100,6 @@
                                                 Detalhes
                                             </a>
 
-                                            <a class="btn btn-sm btn-warning m-1" href="horario.php?id=<?php echo $value['id']; ?>">
-                                                <i class="fas fa-list"></i>
-                                                Horário
-                                            </a>
-
                                             <a class="btn btn-sm btn-info m-1" href="editAlunos.php?id=<?php echo $value['id']; ?>">
                                                 <i class="fas fa-edit"></i>
                                                 Atualizar
