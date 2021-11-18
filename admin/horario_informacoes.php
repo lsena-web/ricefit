@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use App\Session\Login;
 
-Login::init();
+Login::login();
 
 // Conexão com a tabela horarios
 $con = new \App\Model\Conexao('horarios');

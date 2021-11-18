@@ -3,7 +3,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Session\Login;
 
-Login::init();
+Login::login();
 
 // ID DO ALUNO ARMAZENADO EM UM SESSÃO
 if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {

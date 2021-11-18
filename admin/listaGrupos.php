@@ -2,6 +2,10 @@
 
 require_once '../vendor/autoload.php';
 
+use App\Session\Login;
+
+Login::login();
+
 $con = new \App\Model\Conexao('grupos');
 
 $table = $con->read();

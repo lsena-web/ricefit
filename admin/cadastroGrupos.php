@@ -1,8 +1,11 @@
 <?php
 require_once '../vendor/autoload.php';
 
-$con = new \App\Model\Conexao('grupos');
+use App\Session\Login;
 
+Login::login();
+
+$con = new \App\Model\Conexao('grupos');
 
 // RESPONSAVEL PELO O CADASTRO
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {

@@ -43,6 +43,12 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+
+
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="img/logoRice.jpeg" alt="logo Ricefit" height="60" width="60">
+        </div>
+
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -59,9 +65,16 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <a class="nav-link btn btn-success" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
+                </li>
+                <li class="nav-item mx-1">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger text-bold" data-toggle="modal" data-target="#modalSair">
+                        <i class="fas fa-sign-out-alt"></i>
+                        sair
+                    </button>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">

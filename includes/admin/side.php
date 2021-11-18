@@ -1,27 +1,21 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <?php
-        $infoPerfil = new \App\Model\Conexao('admin');
-        $perfil = $infoPerfil->read();
-
-        // as informações virão da sessão
-        ?>
       <!-- Sidebar -->
       <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image">
-                  <img src="arquivos/perfil/<?= $perfil[0]['anexo'] ?>" class="img-circle elevation-2" alt="User Image">
+                  <img src="<?= 'arquivos/perfil/' . $_SESSION['usuario']['imagem'] ?>" class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
-                  <a href="home.php" class="d-block"><?= $perfil[0]['nome'] ?></a>
+                  <a href="home.php" class="d-block"><?= $_SESSION['usuario']['nome'] ?></a>
               </div>
           </div>
 
           <!-- SidebarSearch Form -->
           <div class="form-inline">
               <div class="input-group" data-widget="sidebar-search">
-                  <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                  <input class="form-control form-control-sidebar" type="search" placeholder="Pesquisar" aria-label="Search">
                   <div class="input-group-append">
                       <button class="btn btn-sidebar">
                           <i class="fas fa-search fa-fw"></i>

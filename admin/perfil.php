@@ -2,6 +2,10 @@
 
 include_once '../vendor/autoload.php';
 
+use App\Session\Login;
+
+Login::login();
+
 use App\Controller\Geral; // mascara
 
 $con = new \App\Model\Conexao('admin');

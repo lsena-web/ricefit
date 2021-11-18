@@ -21,7 +21,7 @@ class Login
         self::init();
 
         if (!isset($_SESSION['usuario']) ||  empty($_SESSION['usuario']) || $_SESSION['usuario']['logado'] !== true) {
-            header('location: ../login.php');
+            header('location: login.php');
             exit;
         }
     }
@@ -30,7 +30,7 @@ class Login
     {
         self::init();
         if (isset($_SESSION['usuario']) &&  !empty($_SESSION['usuario']) && $_SESSION['usuario']['logado'] == true) {
-            header('location: home/home.php');
+            header('location: home.php');
             exit;
         }
     }
