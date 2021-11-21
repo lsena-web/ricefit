@@ -5,7 +5,7 @@
                 <h5 class="modal-title text-light" id="staticBackdropLabel">Cadastro realizada com Sucesso!</h5>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <a href="listaAlunos.php" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
+                <a href="avaliacoes.php" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
             </div>
         </div>
     </div>

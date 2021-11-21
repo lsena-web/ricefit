@@ -5,9 +5,23 @@ use App\Session\Login;
 
 Login::login();
 
+// ARMAZENANDO INFORMAÇÕES DO ALUNO NA SESSÃO
+if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
+
+    $id = $_GET['id'];
+
+    $_SESSION['avaliacaoEdit'] = [
+        'idAvaliacao'    => $id,
+    ];
+}
+
+// CONEXÃO COM A TABELA "AVALIACOES"
 $con = new \App\Model\Conexao('avaliacoes');
 
-// CADASTRO
+// PREENCHENDO OS INPUTS
+$infoInputs = $con->read('id = ' . $_SESSION['avaliacaoEdit']['idAvaliacao']);
+
+// ATUALIZAÇÃO
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -17,8 +31,8 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
     $imc =  round($dados['peso'] / ($dados['altura'] * $dados['altura']), 1);
 
-    $cadastro = $con->create([
-        'idAluno'   => $_SESSION['avaliacao']['id'],
+    $atualizacao = $con->update('id= ' . $dados['id'], [
+
         'peso'      => $dados['peso'],
         'altura'    => $dados['altura'],
         'imc'       => $imc,
@@ -39,7 +53,6 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
         'panturrilhaDireita'    => $dados['panturrilhaD'],
         'panturrilhaEsquerda'   => $dados['panturrilhaE'],
 
-        'dataAvaliacao' => $date,
         'dataAtualizacao' => $date
 
     ]);
@@ -47,16 +60,16 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
 include __DIR__ . '/../includes/admin/header.php';
 include __DIR__ . '/../includes/admin/side.php';
-include __DIR__ . '/../view/admin/cadastro_avaliacoes.php';
+include __DIR__ . '/../view/admin/edit_avaliacoes.php';
 include __DIR__ . '/../includes/admin/footer.php';
 
 // OPERAÇÃO REALIZADA COM SUCESSO
-if (isset($cadastro) && !empty($cadastro)) {
+if (isset($atualizacao) && !empty($atualizacao)) {
     echo "<script> $('#modalSucesso').modal('show'); </script>";
 }
 
 // ERRO NA OPERAÇÃO
-if (isset($cadastro) && !is_numeric($cadastro)) {
+if (isset($atualizacao) && $atualizacao != true) {
     echo
     "<script>
         $(function() {

@@ -67,8 +67,10 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>E-mail</th>
+                                <th>IMC</th>
+                                <th>peso (kg)</th>
+                                <th>Data avaliação</th>
+                                <th>Data atualização</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -76,25 +78,25 @@
 
                             <?php foreach ($table as $value) { ?>
                                 <tr>
-                                    <td class="text-center text-bold text-lg"><?php echo $value['dataAvaliacao']; ?></td>
-                                    <td class="text-center text-bold text-lg"><?= $value['dataAtualizacao'] ?></td>
-                                    <!-- <td class="text-center text-bold text-lg"><?php //echo $geral->mask($value['celular'], "(##) #.####-####"); 
-                                                                                    ?></td> -->
+                                    <td class="text-center text-bold text-lg"><?= $value['imc'] ?></td>
+                                    <td class="text-center text-bold text-lg"><?= $value['peso'] ?></td>
+                                    <td class="text-center text-bold text-lg"><?= date('d/m/Y', strtotime($value['dataAvaliacao'])) ?></td>
+                                    <td class="text-center text-bold text-lg"><?= date('d/m/Y', strtotime($value['dataAtualizacao'])) ?></td>
 
                                     <td>
                                         <div class=" d-flex justify-content-between flex-wrap">
 
-                                            <a class="btn btn-sm btn-primary m-1" href="detalhesAlunos.php?id=<?php echo $value['id']; ?>">
+                                            <a class="btn btn-sm btn-primary m-1" href="detalhes_avaliacoes.php?id=<?= $value['id'] ?>">
                                                 <i class="fas fa-eye"></i>
                                                 Detalhes
                                             </a>
 
-                                            <a class="btn btn-sm btn-info m-1" href="editAlunos.php?id=<?php echo $value['id']; ?>">
+                                            <a class="btn btn-sm btn-info m-1" href="edit_avaliacoes.php?id=<?= $value['id'] ?>">
                                                 <i class="fas fa-edit"></i>
                                                 Atualizar
                                             </a>
 
-                                            <a class="btn btn-sm btn-danger m-1" href="<?php echo $_SERVER["PHP_SELF"] ?>?del=<?php echo $value['id']; ?>">
+                                            <a class="btn btn-sm btn-danger m-1" href="<?= $_SERVER["PHP_SELF"] ?>?del=<?= $value['id'] ?>">
                                                 <i class="fas fa-trash"></i>
                                                 Deletar
                                             </a>
@@ -106,8 +108,10 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Nome</th>
-                                <th>E-mail</th>
+                                <th>IMC</th>
+                                <th>peso (kg)</th>
+                                <th>Data avaliação</th>
+                                <th>Data atualização</th>
                                 <th>Ações</th>
                             </tr>
                         </tfoot>
