@@ -93,9 +93,6 @@ window.onload = function() {
         let edit = document.getElementById("editar");
         info.classList.toggle("hide");
         edit.classList.toggle("hide");
-
-
-
     });
     // ao clicar no botão de cancelar a div editar ganha hide e a div inform perde hide
     let btCancel = document.getElementById("btnCancel");

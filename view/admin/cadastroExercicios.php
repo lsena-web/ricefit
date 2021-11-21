@@ -24,6 +24,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="home.php" class="text-success">Home</a></li>
+                        <li class="breadcrumb-item active">Exercícios</li>
                         <li class="breadcrumb-item active">Cadastro</li>
                     </ol>
                 </div>
@@ -74,7 +75,10 @@
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 mb-3">
-                                            <textarea name="descricao" id="summernote2" cols="30" rows="10" required><?php if (isset($_SESSION['value_narrativa']) && !empty($_SESSION['value_narrativa'])) {echo  $_SESSION['value_narrativa']; unset($_SESSION['value_narrativa']) ;} ?></textarea>
+                                            <textarea name="descricao" id="summernote2" cols="30" rows="10" required><?php if (isset($_SESSION['value_narrativa']) && !empty($_SESSION['value_narrativa'])) {
+                                                                                                                            echo  $_SESSION['value_narrativa'];
+                                                                                                                            unset($_SESSION['value_narrativa']);
+                                                                                                                        } ?></textarea>
                                             <b>Descrição <i class="fas fa-edit"></i></b>
                                         </div>
 

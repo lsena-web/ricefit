@@ -46,6 +46,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="home.php" class="text-success">Home</a></li>
+                        <li class="breadcrumb-item active">Exercícios</li>
                         <li class="breadcrumb-item active">Listagem</li>
                     </ol>
                 </div><!-- /.col -->

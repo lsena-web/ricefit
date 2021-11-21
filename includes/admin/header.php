@@ -36,8 +36,9 @@
     <script src="../b4/plugins/calendario/js/script.js"></script>
     <!-- Filepond stylesheet -->
     <link href="../plugins/filepond/dist/filepond.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../estilosAdmin/css/style.css">
     <!-- style -->
-    <link href="../estilosAdmin/css/style.css" rel="stylesheet" />
 
 </head>
 

@@ -48,6 +48,20 @@ const masks = {
             .replace(/(\d{4})(\d{1})/, '$1-$2')
             .replace(/(-\d{1})\d+?$/, '$1')
 
+    },
+    float(value) {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{2})(\d)/, '$1.$2')
+            .replace(/(\d{2}).(\d)(\d{2})/, '$1$2.$3')
+            .replace(/(.\d{2})\d+?$/, '$1')
+    },
+    altura(value) {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{1})(\d)/, '$1.$2')
+            .replace(/(.\d{2})\d+?$/, '$1')
+
     }
 
 }

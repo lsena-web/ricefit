@@ -28,6 +28,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="home.php" class="text-success">Home</a></li>
+                        <li class="breadcrumb-item active">Alunos</li>
                         <li class="breadcrumb-item active">Cadastro</li>
                     </ol>
                 </div>
@@ -67,17 +68,25 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                             <input class="form-control form-control-lg" type="text" name="celular" minlength="11" placeholder="Celular" required autocomplete="off" data-js="phone" value="<?= $inputCelular ?>">
                                         </div>
 
-                                        <div class="col-lg-7 col-md-12 mb-3">
+                                        <div class="col-lg-7 col-md-6 mb-3">
                                             <input class="form-control form-control-lg" type="text" name="email" placeholder="E-mail" required autocomplete="off" value="<?= $inputEmail ?>">
                                         </div>
 
-                                        <div class="col-lg-2 col-md-6 mb-3">
+                                        <div class="col-lg-5 col-md-6 mb-3">
                                             <input class="form-control form-control-lg" type="password" name="senha" minlength="8" placeholder="Senha" required autocomplete="off" value="<?= $inputSenha ?>">
                                         </div>
 
-                                        <div class="col-lg-3 col-md-6 mb-3">
+                                        <div class="col-lg-6 col-md-6 mb-3">
+                                            <select class="custom-select custom-select-lg " name="sexo" required>
+                                                <option selected disabled value="">selecione o sexo</option>
+                                                <option value="m">Masculino</option>
+                                                <option value="f">Feminio</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 mb-3">
                                             <select class="custom-select custom-select-lg " name="turma" required>
-                                                <option selected disabled value="">Selecione a Turma</option>
+                                                <option selected disabled value="">selecione a turma</option>
                                                 <?php if (isset($gp)) {
                                                     foreach ($gp as $v) { ?>
                                                         <option value="<?php echo $v['nome']; ?>"><?php echo $v['nome']; ?></option>
@@ -88,7 +97,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
 
                                         <div class="col-lg-12 col-md-12 mb-3">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" accept="image/*">
+                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" required accept="image/*">
                                                 <label class="custom-file-label text-bold" for="customFile">IMAGEM</label>
                                             </div>
                                         </div>

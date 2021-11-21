@@ -56,11 +56,15 @@ class Conexao
      * @param string
      * return array
      */
-    public function read($where = null)
+    public function read($where = null, $order = null, $limit = null, $fields = '*')
     {
         $where = strlen($where) ? ' WHERE ' . $where    : ' '; // SE EU TIVER CONTEÚDO NESSA VARIAVEL FAÇA "ISSO" SENÃO FAÇA "AQUILO"
-        $sql = "SELECT * FROM $this->table" . ' ' . "$where";
+        $order = strlen($order) ? ' ORDER BY ' . $order : ' ';
+        $limit = strlen($limit) ? ' LIMIT ' . $limit    : ' ';
+
+        $sql = 'SELECT ' . $fields . ' FROM ' . $this->table . ' ' . $where . ' ' . $order . ' ' . $limit;
         $stmt = self::getConn()->query($sql);
+
         if ($stmt->rowCount() == true) {
             $dados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } else {

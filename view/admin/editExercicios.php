@@ -27,6 +27,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="home.php" class="text-success">Home</a></li>
+                        <li class="breadcrumb-item active">Exercícios</li>
                         <li class="breadcrumb-item active">Atualização</li>
                     </ol>
                 </div>
@@ -40,7 +41,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-success">
-                    <div class="card-header row">
+                    <div class="card-header">
                         <div class="row">
                             <div class="col-auto ml-auto">
                                 <a href="listaExercicios.php" class="btn btn-lg btn-success">Listagem <i class="fas fa-list-ul"></i></a>

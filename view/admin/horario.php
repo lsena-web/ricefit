@@ -76,7 +76,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><b>Calendário </b> <i class="far fa-calendar-alt text-success"></i></h1>
+                    <h1><b><?= $_SESSION['horario']['nome'] ?></b> <i class="far fa-calendar-alt text-success"></i></h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -244,7 +244,7 @@
             <div class="modal-body">
                 <form id="addenvent" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-                    <input type="hidden" name="idAluno" value="<?= $_SESSION['id'] ?>">
+                    <input type="hidden" name="idAluno" value="<?= $_SESSION['horario']['id'] ?>">
 
                     <div class="mb-3">
                         <label class="form-label">Título</label>

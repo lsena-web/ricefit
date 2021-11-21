@@ -6,8 +6,6 @@ use App\Session\Login;
 
 Login::login();
 
-use App\Controller\Geral; // mascara
-
 $con = new \App\Model\Conexao('admin');
 
 $inputs = $con->read();

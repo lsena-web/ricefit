@@ -29,7 +29,8 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="home.php" class="text-success">Home</a></li>
-                        <li class="breadcrumb-item active">Cadastro</li>
+                        <li class="breadcrumb-item active">Alunos</li>
+                        <li class="breadcrumb-item active">Atualização</li>
                     </ol>
                 </div>
             </div>
@@ -73,11 +74,35 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                                 <input class="form-control form-control-lg" type="text" name="email" placeholder="E-mail" required autocomplete="off" value="<?= $infoInputs[0]['email'] ?>">
                                             </div>
 
-                                            <div class="col-lg-2 col-md-6 mb-3">
+                                            <div class="col-lg-5 col-md-6 mb-3">
                                                 <input class="form-control form-control-lg" type="text" name="senha" minlength="8" placeholder="Senha" autocomplete="off">
                                             </div>
 
-                                            <div class="col-lg-3 col-md-6 mb-3">
+                                            <div class="col-lg-4 col-md-4 mb-3">
+                                                <select class="custom-select custom-select-lg " name="sexo" required>
+                                                    <option selected value="<?= $infoInputs[0]['sexo'] ?>"><?php if ($infoInputs[0]['sexo'] == 'm') {
+                                                                                                                echo 'Masculino';
+                                                                                                            } else {
+                                                                                                                echo 'feminino';
+                                                                                                            } ?></option>
+                                                    <option value="m">Masculino</option>
+                                                    <option value="f">Feminio</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-4 mb-3">
+                                                <select class="custom-select custom-select-lg " name="condicao" required>
+                                                    <option selected value="<?= $infoInputs[0]['condicao'] ?>"><?php if ($infoInputs[0]['condicao'] == 's') {
+                                                                                                                    echo 'Ativo';
+                                                                                                                } else {
+                                                                                                                    echo 'Inativo';
+                                                                                                                } ?></option>
+                                                    <option value="s">Ativo</option>
+                                                    <option value="n">Inativo</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-4 mb-3">
                                                 <select class="custom-select custom-select-lg " name="turma" required>
                                                     <option selected value="<?= $infoInputs[0]['turma'] ?>"><?= $infoInputs[0]['turma'] ?></option>
                                                     <?php if (isset($gp)) {

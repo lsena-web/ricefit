@@ -74,6 +74,7 @@
                                 <th>E-mail</th>
                                 <th>Celular</th>
                                 <th>Turma</th>
+                                <th>Sexo</th>
                                 <th>Status</th>
                                 <th>Ações</th>
                             </tr>
@@ -86,6 +87,11 @@
                                     <td class="text-center text-bold text-lg"><?= $value['email'] ?></td>
                                     <td class="text-center text-bold text-lg"><?php echo $geral->mask($value['celular'], "(##) #.####-####"); ?></td>
                                     <td class="text-center text-bold text-lg"><?= $value['turma'] ?></td>
+                                    <td class="text-center text-bold text-lg"><?php if ($value['sexo'] == 'm') {
+                                                                                    echo 'Masculino';
+                                                                                } else {
+                                                                                    echo 'Feminino';
+                                                                                } ?></td>
                                     <td class="text-center text-bold text-lg"><?php if ($value['condicao'] == 's') {
                                                                                     echo 'ATIVO';
                                                                                 } else {
@@ -101,7 +107,7 @@
                                                 Horário
                                             </a>
 
-                                            <a class="btn btn-sm btn-info m-1" href="Avaliacao.php?id=<?php echo $value['id']; ?>">
+                                            <a class="btn btn-sm btn-info m-1" href="avaliacoes.php?id=<?php echo $value['id']; ?>">
                                                 <i class="fas fa-list-alt"></i>
                                                 Avaliação
                                             </a>
@@ -117,6 +123,7 @@
                                 <th>E-mail</th>
                                 <th>Celular</th>
                                 <th>Turma</th>
+                                <th>Sexo</th>
                                 <th>Status</th>
                                 <th>Ações</th>
                             </tr>

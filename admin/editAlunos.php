@@ -92,11 +92,13 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
             // ATUALIZANDO INFORMAÇÕES
             $atualizacao = $con->update('id= ' . $dados['id'], [
-                'nome'    => $dados['nome'],
-                'email'    => $dados['email'],
-                'celular'    => $celular,
+                'nome'      => $dados['nome'],
+                'condicao'  => $dados['condicao'],
+                'sexo'      => $dados['sexo'],
+                'email'     => $dados['email'],
+                'celular'   => $celular,
                 'descricao' => $dados['descricao'],
-                'turma' => $dados['turma'],
+                'turma'     => $dados['turma'],
             ] + $anexo);
         }
     }

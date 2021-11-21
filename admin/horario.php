@@ -7,7 +7,15 @@ Login::login();
 
 // ID DO ALUNO ARMAZENADO EM UM SESSÃO
 if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
-    $_SESSION['id'] = $_GET['id'];
+    $aluno = new \App\Model\Conexao('alunos');
+    $id = $_GET['id'];
+    $infoAluno = $aluno->read('id = ' . $id);
+
+    $_SESSION['horario'] = [
+        'id' => $infoAluno[0]['id'],
+        'nome' => $infoAluno[0]['nome'],
+        'email' => $infoAluno[0]['email']
+    ];
 }
 
 // Conexão com a tabela horarios

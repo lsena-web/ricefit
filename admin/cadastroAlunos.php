@@ -61,9 +61,10 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
             $cadastro = $con->create([
                 'nome'      => $dados['nome'],
+                'sexo'      => $dados['sexo'],
                 'senha'     => $senhaSegura,
                 'email'     => $dados['email'],
-                'celular'   => $dados['celular'],
+                'celular'   => $celular,
                 'descricao' => $dados['descricao'],
                 'turma'     => $dados['turma']
             ] + $anexo);
