@@ -62,7 +62,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-auto ml-auto">
-                            <a href="cadastroAlunos.php" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
+                            <a href="cadastroAlunos.php" class="btn btn-lg btn-success"><i class="fas fa-plus-circle"></i> Novo Cadastro</a>
                         </div>
                     </div>
                 </div>

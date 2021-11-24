@@ -57,8 +57,11 @@
             <div class="card card-success card-outline">
                 <div class="card-header">
                     <div class="row">
+                        <div class="col-auto pr-0">
+                            <a href="graficos.php?id=<?= $_SESSION['avaliacao']['id'] ?>" class="btn btn-lg btn-success"><i class="fas fa-chart-pie"></i></a>
+                        </div>
                         <div class="col-auto ml-auto">
-                            <a href="cadastro_avaliacoes.php?id=<?= $_SESSION['avaliacao']['id'] ?>" class="btn btn-lg btn-success">Novo Cadastro <i class="fab fa-wpforms" style="font-size: 29px;"></i></a>
+                            <a href="cadastro_avaliacoes.php?id=<?= $_SESSION['avaliacao']['id'] ?>" class="btn btn-lg btn-success"><i class="fas fa-plus-circle"></i> Novo Cadastro</a>
                         </div>
                     </div>
                 </div>
