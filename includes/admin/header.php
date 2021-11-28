@@ -22,8 +22,7 @@
     <link rel="stylesheet" href="../b4/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- gligthbox -->
     <link href="../b4/plugins/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../b4/dist/css/adminlte.min.css">
+
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="../b4/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- summernote -->
@@ -36,9 +35,11 @@
     <script src="../b4/plugins/calendario/js/script.js"></script>
     <!-- Filepond stylesheet -->
     <link href="../plugins/filepond/dist/filepond.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="../estilosAdmin/css/style.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../b4/dist/css/adminlte.min.css">
     <!-- style -->
+    <link rel="stylesheet" href="../estilosAdmin/css/style.css">
+
 
 </head>
 

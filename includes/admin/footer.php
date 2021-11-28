@@ -60,6 +60,9 @@
 <script src="../b4/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../b4/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../b4/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- ChartJS -->
+<script src="../b4/plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../b4/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -74,7 +77,6 @@
 <script src="../plugins/mascara/mascara.js"></script>
 <!-- configs -->
 <script src="../estilosAdmin/js/script.js"></script>
-
 </body>
 
 </html>

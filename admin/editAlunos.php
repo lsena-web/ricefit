@@ -6,11 +6,12 @@ use App\Session\Login;
 Login::login();
 
 $con = new \App\Model\Conexao('alunos');
+$con2 = new \App\Model\Conexao('admin');
 $grupos = new \App\Model\Conexao('grupos');
 
 use App\Controller\Geral; // MASCARA DE RETORNO DO BANCO DE DADOS
 
-$gp = $grupos->read();
+$gp = $grupos->read("condicao = 's'");
 
 $alertaEmail   = '';
 $alertaArquivo  = '';
@@ -33,11 +34,20 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
     $email = $dados['email'];
     $buscaEmail = $con->read('email = ' . "'$email'");
+    $buscaAdmin = $con2->read('email = ' . "'$email'");
 
     if (!empty($buscaEmail)) {
 
         // CASO OS IDS NÃO SEJAM IGUAIS O EMAIL JA ESTÁ EM USO
         if ($buscaEmail[0]['id'] != $dados['id']) {
+            $testeEmail = true;
+        }
+    }
+
+    if (!empty($buscaAdmin)) {
+
+        // CASO OS IDS NÃO SEJAM IGUAIS O EMAIL JA ESTÁ EM USO
+        if ($buscaAdmin[0]['id'] != $dados['id']) {
             $testeEmail = true;
         }
     }

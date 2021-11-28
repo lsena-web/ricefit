@@ -6,10 +6,11 @@ use App\Session\Login;
 Login::login();
 
 $con = new \App\Model\Conexao('alunos');
+$con2 = new \App\Model\Conexao('admin');
 
 $grupos = new \App\Model\Conexao('grupos');
 
-$gp = $grupos->read();
+$gp = $grupos->read("condicao = 's'");
 
 // VARIÁVEIS AUXILIARES
 $alertaArquivo  = '';
@@ -29,9 +30,10 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
     $email = $dados['email'];
     $testeEmail = $con->read('email = ' . "'$email'");
+    $testeAdmin = $con2->read('email = ' . "'$email'");
 
     // VERIFICANDO SE O EMAIL JA SE ENCONTRA EM USO
-    if (!empty($testeEmail)) { // email, login, cpf
+    if (!empty($testeEmail) || !empty($testeAdmin)) { // email, login, cpf
         $alertaEmail = 'E-mail: ' . $email . ' já está em uso!';
 
         $inputNome      = $dados['nome'];

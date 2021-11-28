@@ -6,6 +6,7 @@ use App\Session\Login;
 
 Login::login();
 
+
 // ARMAZENANDO INFORMAÇÕES DO ALUNO NA SESSÃO
 if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     $aluno = new \App\Model\Conexao('alunos');
