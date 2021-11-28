@@ -114,7 +114,6 @@
                                             <div class="col-12">
                                                 <div class="callout callout-success">
                                                     <h5 class="text-bold text-success">Medidas</h5>
-                                                    <p>Campo obrigatório<b class="text-success text-lg">*</b></p>
                                                 </div>
                                             </div>
 
