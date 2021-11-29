@@ -24,6 +24,9 @@ if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {
 // DELETAR INFORMAÇÃO
 if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
 
+    $con2 = new \App\Model\Conexao('avaliacoes');
+    $con3 = new \App\Model\Conexao('horarios');
+
     $id = $_POST['deletar'];
     $arquivo = $con->read('id=' . $id);
 
@@ -33,7 +36,11 @@ if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
             unlink($pasta . "/" . $v['anexo']);
         }
     }
-    $con->delete('id= ' . $id); // DELETANDO informação
+
+    // DELETANDO ALUNO E INFORMAÇÕES RELACIONADAS AO MESMO
+    $con->delete('id= ' . $id);
+    $con2->delete('idAluno = ' . $id);
+    $con3->delete('idAluno = ' . $id);
 
     header('Location:' . $_SERVER['PHP_SELF'] . '?deletado=deletado');
 }
