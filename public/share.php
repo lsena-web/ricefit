@@ -1,30 +1,47 @@
 <?php
+
 require_once '../vendor/autoload.php';
 
 use App\Session\Login;
 
-Login::login();
+// INICIANDO SESSÃO
+Login::init();
 
-// ARMAZENANDo ID DA AVALIAÇÃO NA SESSÃO
-if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
+// VERIFICANDO CHAVE
+if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['chave']) && !empty($_GET['chave'])) {
 
-    $id = $_GET['id'];
+    // CONEXÃO
+    $conexao = new \App\Model\Conexao('avaliacoes');
 
-    $_SESSION['avaliacaoView'] = [
-        'idAvaliacao'    => $id,
-    ];
+    // BUSCA DE INFORMAÇÕES
+    $avaliacao = $conexao->read('id =' . $_GET['id']);
+
+    // VALIDANDO ID E CHAVE
+    if ($avaliacao[0]['link'] == $_GET['chave']) {
+
+        // SESSÃO PARA BUSCAS
+        $_SESSION['link2'] = [
+
+            'id' => $avaliacao[0]['id']
+        ];
+    } else {
+        // ERRO
+        header('Location: ../error.html');
+        exit;
+    }
+} else {
+
+    // ERRO
+    header('Location: ../error.html');
+    exit;
 }
 
-// CONEXÕES COM TABELAS
-$con = new \App\Model\Conexao('avaliacoes');
+// CONEXÃO
+$con =  new \App\Model\Conexao('avaliacoes');
 $con2 = new \App\Model\Conexao('configs');
-$con3 = new \App\Model\Conexao('alunos');
 
-// PREENCHENDO OS INPUTS
-$infoInputs = $con->read('id = ' . $_SESSION['avaliacaoView']['idAvaliacao']);
-$infoAluno = $con3->read('id = ' . $infoInputs[0]['idAluno']);
-
-$avisos = $con2->read();
+// BUSCANDO INFORMAÇÃO DA AVALIAÇÃO
+$infoInputs = $con->read('id = ' . $_SESSION['link2']['id']);
 
 // AUXILIARES
 $sexo   = '';
@@ -32,6 +49,9 @@ $number = '';
 $grau   = '';
 $aviso  = '';
 $imc    = '';
+
+// buscando informações de imc
+$avisos = $con2->read();
 
 if ($_SESSION['avaliacao']['sexo'] == 'm') {
     $sexo = 'man';
@@ -67,11 +87,9 @@ if ($infoInputs[0]['imc'] < 18.5) {
 }
 
 // imagem relacionada ao imc
-$imagem = 'img/' . $sexo . $number . '.png';
-$textLink = 'https://api.whatsapp.com/send?phone=55' . $infoAluno[0]['celular'] . '&text=http://localhost/ricefit/public/share.php?id=' . $infoInputs[0]['id'] . '%26chave=' . $infoInputs[0]['link'];
+$imagem = '../admin/img/' . $sexo . $number . '.png';
 
 
-include __DIR__ . '/../includes/admin/header.php';
-include __DIR__ . '/../includes/admin/side.php';
-include __DIR__ . '/../view/admin/detalhes_avaliacoes.php';
-include __DIR__ . '/../includes/admin/footer.php';
+include __DIR__ . '/../includes/links/header.php';
+include __DIR__ . '/../view/alunos/share.php';
+include __DIR__ . '/../includes/links/footer.php';

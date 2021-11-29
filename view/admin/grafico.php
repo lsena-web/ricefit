@@ -1,14 +1,36 @@
+<div class="modal fade" id="modal-success">
+    <div class="modal-dialog">
+        <div class="modal-content bg-success">
+            <div class="modal-header">
+                <h4 class="modal-title">Compartilhe!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="4" disabled>http://localhost/ricefit/public/avaliacao.php?id=<?= $_SESSION['grafico']['id'] ?>&chave=<?= $_SESSION['grafico']['link'] ?></textarea>
+                        </div>
+                    </div>
+                    <p class="text-bold mb-0">Copie para a área de transferência </p>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <a href="<?= $textLink ?>" class="btn btn-outline-light btn-lg btn-block text-bold" target="_blank"><i class="far fa-share-square"></i> Compartilhar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <?php if (isset($infoInputs) && !empty($infoInputs)) {
-                        echo '<h1><b>' . $_SESSION['avaliacao']['nome'] . ' ' . date('d-m-Y', strtotime($infoInputs[0]['dataAvaliacao'])) . '</b><i class="fas fa-clipboard text-success ml-2"></i></h1>';
-                    } else {
-                        echo '<h1><b>' . $_SESSION['avaliacao']['nome'] . '</b><i class="fas fa-clipboard text-success ml-2"></i></h1>';
-                    } ?>
+                    <h1><b><?= $_SESSION['avaliacao']['nome'] ?></b><i class="fas fa-clipboard text-success ml-2"></i></h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -37,10 +59,11 @@
                         </div>
                     </div>
                     <?php if (isset($infoInputs) && !empty($infoInputs)) { ?>
+
                         <div class="card-body">
                             <div class="row">
                                 <!-- alterando tamanhos para responsividade -->
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-12">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card card-success card-outline card-outline-tabs">
@@ -68,11 +91,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-
-                                            </div>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +127,7 @@
                                 </div>
                                 <!-- alterando tamanhos para responsividade -->
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+                                    <form>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="callout callout-success">
@@ -213,7 +231,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-lg btn-success btn-block text-bold" name="btnSalvar" value="salvar">Compartilhar</button>
+                                            <button type="button" class="btn btn-lg btn-success btn-block text-bold" data-toggle="modal" data-target="#modal-success">Compartilhar</button>
                                         </div>
                                     </form>
                                 </div>

@@ -1,3 +1,30 @@
+<div class="modal fade" id="modal-success">
+    <div class="modal-dialog">
+        <div class="modal-content bg-success">
+            <div class="modal-header">
+                <h4 class="modal-title">Compartilhe!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="4" disabled>http://localhost/ricefit/public/share.php?id=<?= $infoInputs[0]['id'] ?>&chave=<?= $infoInputs[0]['link'] ?></textarea>
+                        </div>
+                    </div>
+                    <p class="text-bold mb-0">Copie para a área de transferência </p>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <a href="<?= $textLink ?>" class="btn btn-outline-light btn-lg btn-block text-bold" target="_blank"><i class="far fa-share-square"></i> Compartilhar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -184,7 +211,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-lg btn-success btn-block text-bold" name="btnSalvar" value="salvar">Compartilhar</button>
+                                            <button type="button" class="btn btn-lg btn-success btn-block text-bold" data-toggle="modal" data-target="#modal-success">Compartilhar</button>
                                         </div>
                                     </form>
                                 </div>

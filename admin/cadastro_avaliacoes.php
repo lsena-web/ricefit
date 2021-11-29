@@ -16,6 +16,7 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
     $date = date('Y-m-d');
 
     $imc =  round($dados['peso'] / ($dados['altura'] * $dados['altura']), 1);
+    $link = password_hash($_SESSION['avaliacao']['id'] . $date, PASSWORD_DEFAULT);
 
     $cadastro = $con->create([
         'idAluno'   => $_SESSION['avaliacao']['id'],
@@ -40,7 +41,8 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
         'panturrilhaEsquerda'   => $dados['panturrilhaE'],
 
         'dataAvaliacao' => $date,
-        'dataAtualizacao' => $date
+        'dataAtualizacao' => $date,
+        'link' => $link
 
     ]);
 }

@@ -58,7 +58,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-auto pr-0">
-                            <a href="grafico.php?id=<?= $_SESSION['avaliacao']['id'] ?>" class="btn btn-lg btn-success"><i class="fas fa-chart-pie"></i></a>
+                            <?php if (!empty($table)) {
+                                echo '<a href="grafico.php?id=' . $_SESSION['avaliacao']['id'] . '" class="btn btn-lg btn-success"><i class="fas fa-chart-pie"></i></a>';
+                            } else {
+                                echo '<button class="btn btn-lg btn-success" disabled><i class="fas fa-chart-pie"></i></button>';
+                            } ?>
                         </div>
                         <div class="col-auto ml-auto">
                             <a href="cadastro_avaliacoes.php?id=<?= $_SESSION['avaliacao']['id'] ?>" class="btn btn-lg btn-success"><i class="fas fa-plus-circle"></i> Novo Cadastro</a>

@@ -176,7 +176,7 @@ sup {
 }
 
 a {
-    color: #007bff;
+    color: #28a745;
     text-decoration: none;
     background-color: transparent
 }
@@ -4789,7 +4789,7 @@ input[type=submit].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #007bff
+    background-color: #28a745
 }
 
 .nav-fill .nav-item,
@@ -16648,7 +16648,7 @@ body.text-sm .control-sidebar {
 }
 
 .nav-pills .nav-link:not(.active):hover {
-    color: #007bff
+    color: #28a745
 }
 
 .nav-pills .nav-item.dropdown.show .nav-link:hover {

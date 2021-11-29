@@ -1,24 +1,39 @@
 <?php
+
 require_once '../vendor/autoload.php';
 
 use App\Session\Login;
 
-Login::login();
+// INICIANDO SESSÃO
+Login::init();
 
-// ARMAZENANDO INFORMAÇÕES DO ALUNO NA SESSÃO
-if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
-    $aluno = new \App\Model\Conexao('alunos');
-    $id = $_GET['id'];
-    $infoAluno = $aluno->read('id = ' . $id);
+// VERIFICANDO CHAVE
+if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['chave']) && !empty($_GET['chave'])) {
 
-    $_SESSION['grafico'] = [
-        'id'    => $infoAluno[0]['id'],
-        'nome'  => $infoAluno[0]['nome'],
-        'email' => $infoAluno[0]['email'],
-        'tel'   => $infoAluno[0]['celular'],
-        'sexo'  => $infoAluno[0]['sexo'],
-        'link'  => $infoAluno[0]['link']
-    ];
+    // CONEXÃO
+    $conexao = new \App\Model\Conexao('alunos');
+
+    // BUSCA DE INFORMAÇÕES
+    $aluno = $conexao->read('id =' . $_GET['id']);
+
+    // VALIDANDO ID E CHAVE
+    if ($aluno[0]['link'] == $_GET['chave']) {
+
+        // SESSÃO PARA BUSCAS
+        $_SESSION['link'] = [
+
+            'id' => $aluno[0]['id']
+        ];
+    } else {
+        // ERRO
+        header('Location: ../error.html');
+        exit;
+    }
+} else {
+
+    // ERRO
+    header('Location: ../error.html');
+    exit;
 }
 
 // CONEXÃO
@@ -26,11 +41,11 @@ $con =  new \App\Model\Conexao('avaliacoes');
 $con2 = new \App\Model\Conexao('configs');
 
 // BUSCANDO INFORMAÇÃO DA ULTIMA AVALIAÇÃO
-$infoInputs = $con->read('idAluno = ' . $_SESSION['grafico']['id'], 'id DESC', 1);
+$infoInputs = $con->read('idAluno = ' . $_SESSION['link']['id'], 'id DESC', 1);
 
 // BUSCANDO TODOS OS IMCS E SUAS DATAS DE AVALIAÇÃO
-$imc = $con->read('idAluno = ' . $_SESSION['grafico']['id'], 'id DESC', 12, 'imc');
-$label = $con->read('idAluno = ' . $_SESSION['grafico']['id'], 'id DESC', 12, 'dataAvaliacao');
+$imc = $con->read('idAluno = ' . $_SESSION['link']['id'], 'id DESC', 12, 'imc');
+$label = $con->read('idAluno = ' . $_SESSION['link']['id'], 'id DESC', 12, 'dataAvaliacao');
 
 
 // AUXILIARES
@@ -122,18 +137,12 @@ if ($infoInputs[0]['imc'] < 18.5) {
 }
 
 // imagem relacionada ao imc
-$imagem = 'img/' . $sexo . $number . '.png';
-$textLink = 'https://api.whatsapp.com/send?phone=55' . $_SESSION['grafico']['tel'] . '&text=http://localhost/ricefit/public/avaliacao.php?id=' . $_SESSION['grafico']['id'] . '%26chave=' . $_SESSION['grafico']['link'];
+$imagem = '../admin/img/' . $sexo . $number . '.png';
 
 
-
-
-
-
-include __DIR__ . '/../includes/admin/header.php';
-include __DIR__ . '/../includes/admin/side.php';
-include __DIR__ . '/../view/admin/grafico.php';
-include __DIR__ . '/../includes/admin/footer.php';
+include __DIR__ . '/../includes/links/header.php';
+include __DIR__ . '/../view/alunos/avaliacao.php';
+include __DIR__ . '/../includes/links/footer.php';
 
 ?>
 

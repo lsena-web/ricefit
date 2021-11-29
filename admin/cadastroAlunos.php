@@ -60,6 +60,7 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
             $senhaSegura = password_hash($dados['senha'], PASSWORD_DEFAULT);
             $celular = preg_replace('/\D/', '', $dados['celular']);
+            $link = password_hash($dados['email'] . $dados['senha'], PASSWORD_DEFAULT);
 
             $cadastro = $con->create([
                 'nome'      => $dados['nome'],
@@ -68,7 +69,8 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
                 'email'     => $dados['email'],
                 'celular'   => $celular,
                 'descricao' => $dados['descricao'],
-                'turma'     => $dados['turma']
+                'turma'     => $dados['turma'],
+                'link'      => $link
             ] + $anexo);
         } else {
 
