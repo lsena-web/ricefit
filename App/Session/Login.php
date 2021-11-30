@@ -52,7 +52,7 @@ class Login
         self::init();
 
         if (!isset($_SESSION['cliente']) ||  empty($_SESSION['cliente']) || $_SESSION['cliente']['logado'] !== true) {
-            header('location: login.php');
+            header('location: ../index.php');
             exit;
         }
     }
@@ -61,7 +61,7 @@ class Login
     {
         self::init();
         if (isset($_SESSION['cliente']) &&  !empty($_SESSION['cliente']) && $_SESSION['cliente']['logado'] == true) {
-            header('location: home.php');
+            header('location: public/home.php');
             exit;
         }
     }
@@ -71,7 +71,7 @@ class Login
         self::init();
         // REMOVE A SESSÃO DE USUÁRIO
         unset($_SESSION['cliente']);
-        header('location: login.php');
+        header('location: ../index.php');
         exit;
     }
 }

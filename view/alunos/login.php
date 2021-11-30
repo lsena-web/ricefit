@@ -1,3 +1,4 @@
+<?php $alertaLogin = strlen($alertaLogin) ? '<div class= "alert alert-danger">' . $alertaLogin . '</div>' : ''; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -29,10 +30,10 @@
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Faça login para iniciar sua Sessão</p>
-
-                    <form method="post">
+                    <?= $alertaLogin ?>
+                    <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="E-mail">
+                            <input type="email" class="form-control" name="email" placeholder="E-mail">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
@@ -40,7 +41,7 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Senha">
+                            <input type="password" class="form-control" name="senha" placeholder="Senha">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>

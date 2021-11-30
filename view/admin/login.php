@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <p class="login-box-msg">Faça login para iniciar sua Sessão</p>
                     <?= $alertaLogin ?>
-                    <form method="post">
+                    <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
                         <div class="input-group mb-3">
                             <input type="email" class="form-control" name="email" placeholder="E-mail">
                             <div class="input-group-append">
