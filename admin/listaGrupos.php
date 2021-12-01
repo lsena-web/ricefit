@@ -22,9 +22,10 @@ if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {
 // DELETAR INFORMAÇÃO
 if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
 
+    $delete = ''; // omitindo modal delete pós confirmação
+
     $id = $_POST['deletar'];
-    $con->delete('id= ' . $id); // DELETANDO informação
-    header('Location:' . $_SERVER['PHP_SELF'] . '?deletado=deletado');
+    $deletado = $con->delete('id= ' . $id); // DELETANDO informação
 }
 
 
@@ -41,13 +42,14 @@ include __DIR__ . '/../includes/admin/side.php';
 include __DIR__ . '/../view/admin/listaGrupos.php';
 include __DIR__ . '/../includes/admin/footer.php';
 
-if (!empty($delete)) { ?>
-    <script>
-        $('#modalDel').modal('show');
-    </script>
-<?php }
-if (isset($_GET['deletado']) and !empty($_GET['deletado'])) { ?>
-    <script>
-        $('#modalSucesso').modal('show');
-    </script>
-<?php  } ?>
+// TEM CERTEZA QUE DESEJA DELETAR?
+if (!empty($delete)) {
+
+    echo "<script> $('#modalDel').modal('show'); </script>";
+}
+
+// DELETADO COM SUCESSO
+if (isset($deletado) && $deletado == true) {
+
+    echo "<script> $('#modalSucesso').modal('show'); </script>";
+}

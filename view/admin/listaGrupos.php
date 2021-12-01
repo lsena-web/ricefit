@@ -12,28 +12,24 @@
 </div>
 
 
-<?php if (!isset($delete)) {
-    $delete = null;
-} else {
-    foreach ($delete as $valor) { ?>
-        <div class="modal fade" id="modalDel" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md modal-dialog-centered">
-                <div class="modal-content bg-danger">
-                    <div class="modal-header d-flex justify-content-center">
-                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que você deseja deletar?</h5>
-                    </div>
-                    <form method="POST">
-                        <input type="text" name="deletar" value="<?php echo $valor['id'] ?>" hidden>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <button type="submit" class="btn btn-lg btn-outline-light" name="btnClose" value="close">Fechar</button>
-                            <button type="submit" class="btn btn-lg btn-outline-light" name="btnDel" value="deletar">Deletar <i class="fas fa-trash"></i></button>
-                        </div>
-                    </form>
+<?php if (isset($delete) && !empty($delete)) { ?>
+    <div class="modal fade" id="modalDel" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content bg-danger">
+                <div class="modal-header d-flex justify-content-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que você deseja deletar?</h5>
                 </div>
+                <form method="POST">
+                    <input type="text" name="deletar" value="<?= $delete[0]['id'] ?>" hidden>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="submit" class="btn btn-lg btn-outline-light" name="btnClose" value="close">Fechar</button>
+                        <button type="submit" class="btn btn-lg btn-outline-light" name="btnDel" value="deletar">Deletar <i class="fas fa-trash"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
-<?php }
-} ?>
+    </div>
+<?php } ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // enviando informações para o modal vizualizar
             document.querySelector("#id").textContent = (info.event.id);
             document.querySelector("#title").textContent = (info.event.title);
-            document.querySelector("#start").textContent = (info.event.start.toLocaleString());
-            document.querySelector("#end").textContent = (info.event.end.toLocaleString());
             document.querySelector("#descricao").value = info.event.extendedProps['descricao'];
             document.querySelector("#linkVideo").href = info.event.extendedProps['anexo'];
 

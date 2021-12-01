@@ -97,7 +97,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
 
                                         <div class="col-lg-12 col-md-12 mb-3">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" required accept="image/*">
+                                                <input type="file" class="custom-file-input" name="arquivo" id="customFile" accept="image/*">
                                                 <label class="custom-file-label text-bold" for="customFile">IMAGEM</label>
                                             </div>
                                         </div>

@@ -36,7 +36,7 @@ use App\Controller\Geral; // mascara
                     </div>
 
 
-                    <?php if (isset($dados)) { ?>
+                    <?php if (isset($dados)) : ?>
                         <div class="card-body ">
                             <div class="row d-flex justify-content-center ">
                                 <div class="col-12 col-sm-12 col-md-12">
@@ -49,7 +49,11 @@ use App\Controller\Geral; // mascara
                                         <div class="card-body pt-0">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-12 text-center mt-5">
-                                                    <img src="arquivos/alunos/<?php echo $dados[0]['anexo']; ?>" alt="user-avatar" class="img-circle img-fluid" style="width: 15rem;">
+                                                    <?php if (!empty($dados[0]['anexo'])) : ?>
+                                                        <img src="arquivos/alunos/<?php echo $dados[0]['anexo']; ?>" alt="user-avatar" class="img-circle img-fluid" style="width: 15rem;">
+                                                    <?php else : ?>
+                                                        <img src="arquivos/alunos/padrao/padrao.png" alt="user-avatar" class="img-circle img-fluid" style="width: 15rem;">
+                                                    <?php endif; ?>
                                                 </div>
                                                 <div class="col-lg-8 col-md-12  mt-5">
 
@@ -97,7 +101,7 @@ use App\Controller\Geral; // mascara
                                                             <div class="col-12">
                                                                 <label class="text-success text-bold">Descrição:</label>
                                                                 <div class="form-group">
-                                                                    <textarea class="form-control" rows="3" disabled><?= $dados[0]['descricao'] ?></textarea>
+                                                                    <textarea id="summernote3" class="form-control" rows="3" disabled><?= $dados[0]['descricao'] ?></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -118,16 +122,16 @@ use App\Controller\Geral; // mascara
                                             </div>
                                         </div>
 
-                                    <?php } ?>
-
-
                                     </div>
                                 </div>
-                                <!-- /.col-->
                             </div>
-                            <!-- ./row -->
+                        </div>
 
-                            <!-- ./row -->
+                    <?php endif; ?>
+
+                </div>
+            </div>
+        </div>
     </section>
 </div>
 <!-- /.content-wrapper -->

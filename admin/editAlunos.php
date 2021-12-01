@@ -69,7 +69,25 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
                 $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
                 $novoNome = uniqid() . ".$extensao";
 
-                move_uploaded_file($caminhoTemporario, $pasta . $novoNome); // UPLOAD
+                $arquivo = $con->read('id= ' . $dados['id']);
+
+                // DELETANDO ARQUIVO ANTERIOR
+                if (!empty($novoNome)) {
+
+                    foreach ($arquivo as $v) {
+
+                        if (!empty($v['anexo'])) {
+
+                            unlink($pasta . "/" . $v['anexo']);
+                        }
+                    }
+                }
+
+                // NOME DO ARQUIVO PARA INSERT
+                $anexo['anexo'] = $novoNome;
+
+                // UPLOAD
+                move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
             } else {
 
                 $infoInputs = $con->read('id= ' . $dados['id']);
@@ -79,17 +97,6 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
         // VERIFICANDO EXISTÊNCIA DE ALERTA PARA ARQUIVOS
         if (empty($alertaArquivo)) {
-
-            $arquivo = $con->read('id= ' . $dados['id']);
-            $pasta = "arquivos/alunos/";
-
-            // DELETANDO ARQUIVO ANTERIOR
-            if (!empty($novoNome)) {
-                foreach ($arquivo as $v) {
-                    unlink($pasta . "/" . $v['anexo']);
-                }
-                $anexo['anexo'] = $novoNome;
-            }
 
             // VERIFICANDO SOLICITAÇÃO DE NOVA SENHA
             if (isset($dados['senha']) && !empty($dados['senha'])) {

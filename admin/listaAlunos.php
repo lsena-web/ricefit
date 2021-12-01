@@ -24,6 +24,8 @@ if (isset($_GET['del']) and !empty($_GET['del']) and is_numeric($_GET['del'])) {
 // DELETAR INFORMAÇÃO
 if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
 
+    $delete = ''; // omitindo modal delete pós confirmação
+
     $con2 = new \App\Model\Conexao('avaliacoes');
     $con3 = new \App\Model\Conexao('horarios');
 
@@ -38,11 +40,9 @@ if (isset($_POST['btnDel']) and !empty($_POST['btnDel'])) {
     }
 
     // DELETANDO ALUNO E INFORMAÇÕES RELACIONADAS AO MESMO
-    $con->delete('id= ' . $id);
+    $deletado = $con->delete('id= ' . $id);
     $con2->delete('idAluno = ' . $id);
     $con3->delete('idAluno = ' . $id);
-
-    header('Location:' . $_SERVER['PHP_SELF'] . '?deletado=deletado');
 }
 
 // CANCELAR AÇÃO DE DELETE
@@ -89,13 +89,14 @@ include __DIR__ . '/../includes/admin/side.php';
 include __DIR__ . '/../view/admin/listaAlunos.php';
 include __DIR__ . '/../includes/admin/footer.php';
 
-if (!empty($delete)) { ?>
-    <script>
-        $('#modalDel').modal('show');
-    </script>
-<?php }
-if (isset($_GET['deletado']) and !empty($_GET['deletado'])) { ?>
-    <script>
-        $('#modalSucesso').modal('show');
-    </script>
-<?php  } ?>
+// TEM CERTEZA QUE DESEJA DELETAR?
+if (!empty($delete)) {
+
+    echo "<script> $('#modalDel').modal('show'); </script>";
+}
+
+// DELETADO COM SUCESSO
+if (isset($deletado) && $deletado == true) {
+
+    echo "<script> $('#modalSucesso').modal('show'); </script>";
+}

@@ -48,16 +48,20 @@ if (isset($_POST['btnEntrar']) && !empty($_POST['btnEntrar'])) {
             // email existente?
             if (!empty($testeLogin)) {
                 if (password_verify($senha, $testeLogin[0]['senha'])) { // senha correta?
-
-                    $_SESSION['cliente'] = [
-                        'id'        => $testeLogin[0]['id'],
-                        'email'     => $testeLogin[0]['email'],
-                        'nome'      => $testeLogin[0]['nome'],
-                        'imagem'    => $testeLogin[0]['anexo'],
-                        'logado'    => true,
-                    ];
-                    header('Location: public/home.php');
-                    exit;
+                    if ($testeLogin[0]['condicao'] == 's') {
+                        $_SESSION['cliente'] = [
+                            'id'        => $testeLogin[0]['id'],
+                            'email'     => $testeLogin[0]['email'],
+                            'nome'      => $testeLogin[0]['nome'],
+                            'imagem'    => $testeLogin[0]['anexo'],
+                            'logado'    => true,
+                        ];
+                        header('Location: public/home.php');
+                        exit;
+                    } else {
+                        $alertaLogin = 'Identificação ou Senha invalidos';
+                        $_SESSION['quantidade'] += 1;
+                    }
                 } else {
                     $alertaLogin = 'Identificação ou Senha invalidos';
                     $_SESSION['quantidade'] += 1;

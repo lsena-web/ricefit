@@ -106,7 +106,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <h5 class="modal-title" id="exampleModalLabel"><span class="" id="title"></span></h5>
+                <h5 class="modal-title  text-bold text-uppercase" id="exampleModalLabel"><span class="" id="title"></span></h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -114,13 +114,10 @@
             <div class="modal-body">
                 <div class="informacao" id="inform">
                     <dl class="row">
-                        <div class="col-lg-6 col-md-6 mb-2">
-                            <div><a href="" id="linkVideo" class="glightbox btn btn-lg btn-success btn-block"><i class="far fa-play-circle text-lg text-bold"></i></a></div>
+                        <div class="col-lg-12 col-md-12 mb-2 p-0">
+                            <div><a href="" id="linkVideo" class="glightbox btn btn-lg btn-success btn-block"><i class="fas fa-play text-xl text-bold"></i> <span class="text-xl text-bold">Play</span></a></div>
                         </div>
-                        <div class="col-lg-g col-md-6">
-                            <div><span class="text-bold">Inicio:</span> <span class="" id="start"></span></div>
-                            <div><span class="text-bold">Fim:</span> <span class="" id="end"></span></div>
-                        </div>
+
                         <div class="col-lg-g col-md-6"></div>
 
                         <dt class="col-sm-5" hidden>ID DO EVENTO:</dt>

@@ -33,8 +33,6 @@
     <script src='../b4/plugins/calendario/lib/main.js'></script>
     <script src='../b4/plugins/calendario/lib/locales/pt-br.js'></script>
     <script src="../b4/plugins/calendario/js/script.js"></script>
-    <!-- Filepond stylesheet -->
-    <link href="../plugins/filepond/dist/filepond.css" rel="stylesheet" />
     <!-- Theme style -->
     <link rel="stylesheet" href="../b4/dist/css/adminlte.min.css">
     <!-- style -->

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
         eventLimit: true,
-        events: '../admin/horario_informacoes.php',
+        events: '../admin/horario_aluno.php',
         extraParams: function() {
             return {
                 cachebuster: new Date().valueOf()
@@ -21,25 +21,19 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         eventClick: function(info) {
             // o event click serve para vc clicar no evento
+            // console.log(info.event); // verifica informacoes do event
 
             // chamando modal
-            var mod = new bootstrap.Modal(document.querySelector("#exampleModal"));
+            var mod = new bootstrap.Modal(document.querySelector("#visualizar"));
             mod.show();
 
-            var cod = document.querySelector("#id");
-            cod.textContent = (info.event.id);
+            // enviando informações para o modal vizualizar
+            document.querySelector("#id").textContent = (info.event.id);
+            document.querySelector("#title").textContent = (info.event.title);
+            document.querySelector("#descricao").value = info.event.extendedProps['descricao'];
+            document.querySelector("#linkVideo").href = "../admin/" + info.event.extendedProps['anexo'];
 
-            var title = document.querySelector("#title");
-            title.textContent = (info.event.title);
-
-            var start = document.querySelector("#start");
-            start.textContent = (info.event.start.toLocaleString());
-
-            var end = document.querySelector("#end");
-            end.textContent = (info.event.end.toLocaleString());
-
-
-
+            document.glightbox.reload(); // ATUALIZANDO O GLIGHTBOX PARA O CAMINHO DO VIDEO SEJA ARMAZENADO NO MESMO
 
         }
 

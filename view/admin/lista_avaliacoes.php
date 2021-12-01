@@ -5,7 +5,7 @@
                 <h5 class="modal-title text-light" id="staticBackdropLabel">Informação deletada com Sucesso!</h5>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <a href="<?php echo $_SERVER["PHP_SELF"]; ?>" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
+                <a href="<?= $_SERVER["PHP_SELF"] ?>" class="btn btn-lg btn-outline-light text-bold">Listagem <i class="fas fa-stream"></i></a>
             </div>
         </div>
     </div>

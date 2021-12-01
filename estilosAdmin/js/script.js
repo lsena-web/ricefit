@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     // configurações do toast SweetAlert2 Examples
     document.Toast = Swal.mixin({
@@ -52,6 +52,15 @@ $(function() {
             ['outros', ['fullscreen']]
         ]
     })
+
+
+    // Summernote
+    $('#summernote3').summernote({
+        minHeight: 200,
+        toolbar: [
+            ['outros', ['fullscreen']]
+        ]
+    }).summernote('disable');
 
 
     /**

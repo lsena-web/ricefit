@@ -48,15 +48,32 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
         // EXTENSÃO DO ARQUIVO
         $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
 
-        if (in_array($extensao, $formatosPermitidos)) {
+        // VERIFICANDO SE ALGUM ARQUIVO FOI ENVIADO
+        if (!empty($_FILES['arquivo']['tmp_name'])) {
 
-            $pasta = "arquivos/alunos/";
-            $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
-            $novoNome = uniqid() . ".$extensao";
-            $anexo['anexo'] = $novoNome;
+            if (in_array($extensao, $formatosPermitidos)) {
 
-            // UPLOAD
-            move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
+                $pasta = "arquivos/alunos/";
+                $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
+                $novoNome = uniqid() . ".$extensao";
+                $anexo['anexo'] = $novoNome;
+
+                // UPLOAD
+                move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
+            } else {
+
+                $alertaArquivo  = 'Arquivo Inválido! Escolha um arquivo com formato permitido.';
+
+                $inputNome      = $dados['nome'];
+                $inputEmail     = $dados['email'];
+                $inputCelular   = $dados['celular'];
+                $inputSenha     = $dados['senha'];
+                $inputDescricao = $dados['descricao'];
+            }
+        }
+
+        // VERIFICANDO EXISTENCIA DE ALERTAS
+        if (empty($alertaArquivo)) {
 
             $senhaSegura = password_hash($dados['senha'], PASSWORD_DEFAULT);
             $celular = preg_replace('/\D/', '', $dados['celular']);
@@ -72,18 +89,10 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
                 'turma'     => $dados['turma'],
                 'link'      => $link
             ] + $anexo);
-        } else {
-
-            $alertaArquivo  = 'Arquivo Inválido! Escolha um arquivo com formato permitido.';
-
-            $inputNome      = $dados['nome'];
-            $inputEmail     = $dados['email'];
-            $inputCelular   = $dados['celular'];
-            $inputSenha     = $dados['senha'];
-            $inputDescricao = $dados['descricao'];
         }
     }
 }
+
 
 include __DIR__ . '/../includes/admin/header.php';
 include __DIR__ . '/../includes/admin/side.php';

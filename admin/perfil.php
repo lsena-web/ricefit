@@ -18,36 +18,6 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
     $anexo = [];
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    $formatosPermitidos = array("png", "jpg", "jpeg", "svg");
-    $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);    // EXTENSÃO DO ARQUIVO
-
-    // VERIFICANDO SE A IMAGEM FOI ENVIADA
-    if (!empty($_FILES['arquivo']['tmp_name'])) {
-        if (in_array($extensao, $formatosPermitidos)) {
-
-            $pasta = "arquivos/perfil/";
-            $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
-            $novoNome = uniqid() . ".$extensao";
-
-            $arquivo = $con->read('id= ' . $dados['id']);
-
-            // CASO QUEIRA ATUALIZAR O ARQUIVO
-            if (!empty($novoNome)) {
-                foreach ($arquivo as $v) {
-                    unlink($pasta . "/" . $v['anexo']);
-                }
-            }
-
-            $anexo['anexo'] = $novoNome; // ENVIANDO NOME DO ARQUIVO PARA O ARRAY
-
-            // UPLOAD
-            move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
-        } else {
-            $infoInputs = $con->read('id= ' . $dados['id']);
-            $alertaArquivo  = 'Arquivo Inválido! Escolha um arquivo com formato permitido.';
-        }
-    }
-
     // VERIFICANDO SE A SENHA FOI ENVIADA
     if (isset($dados['senha']) && !empty($dados['senha'])) {
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -60,9 +30,6 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
     // VERIFICANDO SE EXISTE ALGUM ALERTA
     if (empty($alertaArquivo)) {
 
-        $arquivo = $con->read('id= ' . $dados['id']);
-        $pasta = "arquivos/perfil/";
-        $senhaSegura = password_hash($dados['senha'], PASSWORD_DEFAULT);
         $celular = preg_replace('/\D/', '', $dados['celular']);
 
         $atualizacao = $con->update('id= ' . $dados['id'], [
