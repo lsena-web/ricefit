@@ -27,57 +27,138 @@ $con2 = new \App\Model\Conexao('exercicios');
 // buscando exercicios
 $exercicios = $con2->read();
 
+// AUXILIAR
+$alerta = '';
+
 // CADASTRO
 if (isset($_POST['btnCadastro']) && !empty($_POST['btnCadastro'])) {
 
+    // DADOS DOS INPUTS
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    // CONVERTENDO DATAS PARA O FORMATO DO BANCO DE DADOS
-    $conversorStart = str_replace('/', '-', $dados['start']);
-    $start = date("Y-m-d H:i:s", strtotime($conversorStart));
+    // AUXILIARES
+    $data = '';
+    $data1 = '';
 
-    $conversorEnd = str_replace('/', '-', $dados['end']);
-    $end = date("Y-m-d H:i:s", strtotime($conversorEnd));
+    // REPARTINDO DATA DE INICIO
+    $dia = substr($dados['start'], 0, 2);
+    $mes = substr($dados['start'], 3, 2);
+    $ano = substr($dados['start'], 6, 4);
 
-    // CADASTRANDO INFORMAÇÕES
-    $cadastro = $con->create([
-        'idAluno'   => $dados['idAluno'],
-        'titulo'    => $dados['titulo'],
-        'cor'       => $dados['cor'],
-        'exercicio' => $dados['exercicio'],
-        'descricao' => $dados['descricao'],
-        'inicio'    => $start,
-        'fim'       => $end
-    ]);
+    // REPARTINDO DATA DE FIM
+    $dia1 = substr($dados['end'], 0, 2);
+    $mes1 = substr($dados['end'], 3, 2);
+    $ano1 = substr($dados['end'], 6, 4);
+
+    // VALIDANDO DATA INICIO
+    if (checkdate($mes, $dia, $ano)) {
+        $data = true;
+    }
+
+    // VALIDANDO DATA FIM
+    if (checkdate($mes1, $dia1, $ano1)) {
+        $data1 = true;
+    }
+
+    if ($data == true && $data1 == true) {
+        // CONVERTENDO DATAS PARA O FORMATO DO BANCO DE DADOS
+        $conversorStart = str_replace('/', '-', $dados['start']);
+        $start = date("Y-m-d H:i:s", strtotime($conversorStart));
+
+        $conversorEnd = str_replace('/', '-', $dados['end']);
+        $end = date("Y-m-d H:i:s", strtotime($conversorEnd));
+
+        // VERIFICANDO SE A DATA DE INICIO NÃO É SUPERIOR A DE TERMINO
+        if ($start < $end) {
+
+            // RESETANDO ALERTA
+            $alerta = '';
+
+            // CADASTRANDO INFORMAÇÕES
+            $cadastro = $con->create([
+                'idAluno'   => $dados['idAluno'],
+                'titulo'    => $dados['titulo'],
+                'cor'       => $dados['cor'],
+                'exercicio' => $dados['exercicio'],
+                'descricao' => $dados['descricao'],
+                'inicio'    => $start,
+                'fim'       => $end
+            ]);
+        } else {
+
+            $alerta = 'Erro! a data de INÍCIO não pode ser superior a data de TERMINO';
+        }
+    } else {
+
+        $alerta = 'Data inválida!';
+    }
 }
 
 // ATUALIZAÇÃO
 if (isset($_POST['btnEditar']) && !empty($_POST['btnEditar'])) {
 
-    $anexo = [];
-
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    // CONVERTENDO DATAS PARA O FORMATO DO BANCO DE DADOS
-    $conversorStart = str_replace('/', '-', $dados['inicio']);
-    $start = date("Y-m-d H:i:s", strtotime($conversorStart));
+    // AUXILIARES
+    $anexo  = [];
+    $data   = '';
+    $data1  = '';
 
-    $conversorEnd = str_replace('/', '-', $dados['fim']);
-    $end = date("Y-m-d H:i:s", strtotime($conversorEnd));
+    // REPARTINDO DATA DE INICIO
+    $dia = substr($dados['inicio'], 0, 2);
+    $mes = substr($dados['inicio'], 3, 2);
+    $ano = substr($dados['inicio'], 6, 4);
 
-    // VERIFICANDO SE O EXERCICIO FOI ATUALIZADO
-    if (isset($dados['exercicio']) && !empty($dados['exercicio'])) {
-        $anexo['exercicio'] = $dados['exercicio'];
+    // REPARTINDO DATA DE FIM
+    $dia1 = substr($dados['fim'], 0, 2);
+    $mes1 = substr($dados['fim'], 3, 2);
+    $ano1 = substr($dados['fim'], 6, 4);
+
+    // VALIDANDO DATA INICIO
+    if (checkdate($mes, $dia, $ano)) {
+        $data = true;
     }
 
-    // ATUALIZANDO INFORMAÇÕES
-    $atualizacao = $con->update('id= ' . $dados['codigo'], [
-        'titulo'    => $dados['titulo'],
-        'cor'       => $dados['cor'],
-        'descricao' => $dados['descricao'],
-        'inicio'    => $start,
-        'fim'       => $end,
-    ] + $anexo);
+    // VALIDANDO DATA FIM
+    if (checkdate($mes1, $dia1, $ano1)) {
+        $data1 = true;
+    }
+
+    if ($data == true && $data1 == true) {
+        // CONVERTENDO DATAS PARA O FORMATO DO BANCO DE DADOS
+        $conversorStart = str_replace('/', '-', $dados['inicio']);
+        $start = date("Y-m-d H:i:s", strtotime($conversorStart));
+
+        $conversorEnd = str_replace('/', '-', $dados['fim']);
+        $end = date("Y-m-d H:i:s", strtotime($conversorEnd));
+
+        // VERIFICANDO SE A DATA DE INICIO NÃO É SUPERIOR A DE TERMINO
+        if ($start < $end) {
+
+            // VERIFICANDO SE O EXERCICIO FOI ATUALIZADO
+            if (isset($dados['exercicio']) && !empty($dados['exercicio'])) {
+                $anexo['exercicio'] = $dados['exercicio'];
+            }
+
+            // RESETANDO ALERTA
+            $alerta = '';
+
+            // ATUALIZANDO INFORMAÇÕES
+            $atualizacao = $con->update('id= ' . $dados['codigo'], [
+                'titulo'    => $dados['titulo'],
+                'cor'       => $dados['cor'],
+                'descricao' => $dados['descricao'],
+                'inicio'    => $start,
+                'fim'       => $end,
+            ] + $anexo);
+        } else {
+
+            $alerta = 'Erro! a data de INÍCIO não pode ser superior a data de TERMINO';
+        }
+    } else {
+
+        $alerta = 'Data inválida!';
+    }
 }
 
 

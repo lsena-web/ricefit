@@ -1,3 +1,6 @@
+<?php
+$alerta     = strlen($alerta)    ? '<div class= "alert alert-warning text-bold m-1">' . $alerta . '</div>' : '';
+?>
 <!-- MODAL SUCESSO -->
 <div class="modal fade" id="modalSucesso" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
@@ -92,8 +95,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-success row d-flex justify-content-center p-lg-2 p-md-2 p-sm-0 m-1">
+                    <?= $alerta ?>
                     <div class="col-md-12">
-                        <div id='calendar'></div>
+                        <div id='calendar' style="min-height: 600px;"></div>
                     </div>
                 </div>
             </div>
@@ -239,6 +243,7 @@
                 </button>
             </div>
             <div class="modal-body">
+
                 <form id="addenvent" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
                     <input type="hidden" name="idAluno" value="<?= $_SESSION['horario']['id'] ?>">
