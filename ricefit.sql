@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Dez-2021 às 00:34
+-- Tempo de geração: 02-Dez-2021 às 16:12
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.10
 
@@ -32,15 +32,16 @@ CREATE TABLE `admin` (
   `nome` varchar(60) NOT NULL,
   `email` varchar(200) NOT NULL,
   `celular` char(14) NOT NULL,
-  `senha` varchar(255) NOT NULL
+  `senha` varchar(255) NOT NULL,
+  `anexo` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `admin`
 --
 
-INSERT INTO `admin` (`id`, `nome`, `email`, `celular`, `senha`) VALUES
-(1, 'administrador', 'admin@gmail.com', '88977776666', '$2y$10$c6eNwh5InvBzEtSUyZrHAejC2aZBSJ5wMGm5Hz5CVOEEgvZnPIqSS');
+INSERT INTO `admin` (`id`, `nome`, `email`, `celular`, `senha`, `anexo`) VALUES
+(1, 'administrador', 'admin@gmail.com', '88977776666', '$2y$10$c6eNwh5InvBzEtSUyZrHAejC2aZBSJ5wMGm5Hz5CVOEEgvZnPIqSS', '');
 
 -- --------------------------------------------------------
 
