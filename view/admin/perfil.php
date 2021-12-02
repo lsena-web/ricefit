@@ -78,6 +78,21 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                         <div class="col-lg-5 col-md-6 mb-3">
                                             <input class="form-control form-control-lg" type="password" name="senha" placeholder="SENHA" autocomplete="off">
                                         </div>
+
+                                        <div class="col-lg-12 col-md-12 mb-3">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="arquivo" placeholder="aaaa" id="customFile" accept="image/*">
+                                                <label class="custom-file-label text-bold" for="customFile">IMAGEM</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 mb-3">
+                                            <div class="callout callout-success">
+                                                <h5 class="text-bold text-success">Formatos Permitidos:</h5>
+                                                <p>PNG, JPG, JPEG, SVG <i class="far fa-images ml-2"></i></p>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

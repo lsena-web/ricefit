@@ -5,7 +5,11 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <div class="image">
-                  <img src="<?= 'arquivos/perfil/' . $_SESSION['usuario']['imagem'] ?>" class="img-circle elevation-2" alt="User Image">
+                  <?php if (!empty($_SESSION['usuario']['imagem'])) : ?>
+                      <img src="<?= 'arquivos/perfil/' . $_SESSION['usuario']['imagem'] ?>" class="img-circle elevation-2" alt="User Image">
+                  <?php else : ?>
+                      <img src="arquivos/alunos/padrao/padrao.png" class="img-circle elevation-2" alt="User Image">
+                  <?php endif; ?>
               </div>
               <div class="info">
                   <a href="home.php" class="d-block"><?= $_SESSION['usuario']['nome'] ?></a>
