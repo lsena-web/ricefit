@@ -24,6 +24,13 @@
         <script src="../b4/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../b4/dist/js/demo.js"></script>
+        <!-- Aos -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            /* Aos */
+            AOS.init();
+        </script>
+
         </body>
 
         </html>

@@ -58,7 +58,7 @@
                     <div class="d-flex justify-content-end">
                         <div class="mt-2 mx-1">
                             <p>
-                                <a href="forgot-password.html text-success">Recuperar Senha</a>
+                                <a href="forgot.php">Recuperar Senha</a>
                             </p>
                         </div>
                     </div>
