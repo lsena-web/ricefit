@@ -16,5 +16,5 @@ $exercicios = $con1->read(null, null, null, 'COUNT(id) as quantidade');
 
 include __DIR__ . '/../includes/admin/header.php';
 include __DIR__ . '/../includes/admin/side.php';
-include __DIR__ . '/../view/admin/home.php';
+include __DIR__ . '/../view/admin/principal.php';
 include __DIR__ . '/../includes/admin/footer.php';

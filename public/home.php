@@ -10,5 +10,5 @@ Login::loginCliente();
 
 
 include __DIR__ . '/../includes/alunos/header.php';
-include __DIR__ . '/../view/alunos/home.php';
+include __DIR__ . '/../view/alunos/principal.php';
 include __DIR__ . '/../includes/alunos/footer.php';
