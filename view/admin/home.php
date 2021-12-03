@@ -21,9 +21,37 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3><?= $alunos[0]['quantidade'] ?></h3>
 
-    
+                            <p class="text-bold text-lg">Alunos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <a href="listaAlunos.php" class="small-box-footer">Saiba mais <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
 
+                <div class="col-lg-6 col-md-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3><?= $exercicios[0]['quantidade'] ?></h3>
+
+                            <p class="text-bold text-lg">Exercícios</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <a href="listaExercicios.php" class="small-box-footer">Saiba mais <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </section>
 
