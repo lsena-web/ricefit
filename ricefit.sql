@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Dez-2021 às 16:12
+-- Tempo de geração: 03-Dez-2021 às 06:25
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.10
 
@@ -33,15 +33,16 @@ CREATE TABLE `admin` (
   `email` varchar(200) NOT NULL,
   `celular` char(14) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `anexo` varchar(60) NOT NULL
+  `anexo` varchar(60) NOT NULL,
+  `recover` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `admin`
 --
 
-INSERT INTO `admin` (`id`, `nome`, `email`, `celular`, `senha`, `anexo`) VALUES
-(1, 'administrador', 'admin@gmail.com', '88977776666', '$2y$10$c6eNwh5InvBzEtSUyZrHAejC2aZBSJ5wMGm5Hz5CVOEEgvZnPIqSS', '');
+INSERT INTO `admin` (`id`, `nome`, `email`, `celular`, `senha`, `anexo`, `recover`) VALUES
+(1, 'administrador', 'admin@gmail.com', '88977776666', '$2y$10$c6eNwh5InvBzEtSUyZrHAejC2aZBSJ5wMGm5Hz5CVOEEgvZnPIqSS', '', '');
 
 -- --------------------------------------------------------
 
@@ -60,8 +61,16 @@ CREATE TABLE `alunos` (
   `anexo` varchar(60) NOT NULL,
   `descricao` text NOT NULL,
   `turma` varchar(30) NOT NULL,
-  `link` varchar(255) NOT NULL
+  `link` varchar(255) NOT NULL,
+  `recover` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `alunos`
+--
+
+INSERT INTO `alunos` (`id`, `nome`, `email`, `celular`, `senha`, `sexo`, `condicao`, `anexo`, `descricao`, `turma`, `link`, `recover`) VALUES
+(1, 'lucas sena', 'lsena.web@gmail.com', '88993610306', '$2y$10$2ePKceBbDT75pde.I5q7BeHxTi8n0v2yCZS90HIWT3LdoMzbkIBZ2', 'm', 's', '', '<p>foi solicitado hipertrofia e exercícios de cárdico&nbsp;</p>', 'crossfit', '$2y$10$mhS0ObMfGpa4ssy3GqcisOOelts.dw3eiB5Z7BysBgcA/1JTLhdo.', 'NULL');
 
 -- --------------------------------------------------------
 
@@ -129,6 +138,17 @@ CREATE TABLE `exercicios` (
   `anexo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `exercicios`
+--
+
+INSERT INTO `exercicios` (`id`, `nome`, `descricao`, `anexo`) VALUES
+(1, 'Jumping Jacks', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</span><br></p>', '61a8ed6be6d04.mp4'),
+(2, 'abdominais', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</span><br></p>', '61a8eddddedee.mp4'),
+(3, 'Agachamento', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</span><br></p>', '61a8edfcc5aa5.mp4'),
+(4, 'Step Ups', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</span><br></p>', '61a8ee1d801b0.mp4'),
+(5, 'Wall Sit', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</span><br></p>', '61a8ee39c7c68.mp4');
+
 -- --------------------------------------------------------
 
 --
@@ -140,6 +160,13 @@ CREATE TABLE `grupos` (
   `nome` varchar(60) NOT NULL,
   `condicao` enum('s','n') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `grupos`
+--
+
+INSERT INTO `grupos` (`id`, `nome`, `condicao`) VALUES
+(1, 'crossfit', 's');
 
 -- --------------------------------------------------------
 
@@ -157,6 +184,13 @@ CREATE TABLE `horarios` (
   `inicio` datetime NOT NULL,
   `fim` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `horarios`
+--
+
+INSERT INTO `horarios` (`id`, `idAluno`, `titulo`, `cor`, `exercicio`, `descricao`, `inicio`, `fim`) VALUES
+(1, 1, 'asdasdasd', '#007bff', 1, 'asdasdasdasdasd', '2021-12-02 00:00:00', '2021-12-03 00:00:00');
 
 --
 -- Índices para tabelas despejadas
@@ -219,7 +253,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de tabela `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `avaliacoes`
@@ -237,19 +271,19 @@ ALTER TABLE `configs`
 -- AUTO_INCREMENT de tabela `exercicios`
 --
 ALTER TABLE `exercicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `horarios`
 --
 ALTER TABLE `horarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
