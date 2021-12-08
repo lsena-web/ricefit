@@ -15,6 +15,7 @@ $gp = $grupos->read("condicao = 's'");
 // VARIÁVEIS AUXILIARES
 $alertaArquivo  = '';
 $alertaEmail    = '';
+$descricao      = '';
 
 $inputNome      = '';
 $inputEmail     = '';
@@ -24,7 +25,6 @@ $inputDescricao = '';
 
 // CADASTRO
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
-
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 

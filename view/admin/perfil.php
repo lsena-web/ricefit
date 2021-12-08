@@ -2,8 +2,7 @@
 
 use App\Controller\Geral;
 
-$alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning text-bold m-1">' . $alertaArquivo . '</div>' : '';
-
+$alerta = strlen($alerta)    ? '<div class= "alert alert-danger text-bold m-1">' . $alerta . '</div>' : '';
 ?>
 <div class="modal fade" id="modalSucesso" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
@@ -52,7 +51,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                             </div>
                         </div>
                     </div>
-                    <?= $alertaArquivo ?>
+                    <?= $alerta ?>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -89,7 +88,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                         <div class="col-lg-12 col-md-12 mb-3">
                                             <div class="callout callout-success">
                                                 <h5 class="text-bold text-success">Formatos Permitidos:</h5>
-                                                <p>PNG, JPG, JPEG, SVG <i class="far fa-images ml-2"></i></p>
+                                                <p>PNG, JPG, JPEG, SVG tamanho máximo: 39mb<i class="far fa-images ml-2"></i></p>
                                             </div>
                                         </div>
 

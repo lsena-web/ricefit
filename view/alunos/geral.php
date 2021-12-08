@@ -45,7 +45,7 @@
                                                         <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
 
                                                             <li class="nav-item">
-                                                                <a class="nav-link active" id="man1-tab" data-toggle="pill" href="#man1" role="tab" aria-controls="man1" aria-selected="true"><?php if ($_SESSION['avaliacao']['sexo'] == 'm') {
+                                                                <a class="nav-link active" id="man1-tab" data-toggle="pill" href="#man1" role="tab" aria-controls="man1" aria-selected="true"><?php if ($_SESSION['cliente']['sexo'] == 'm') {
                                                                                                                                                                                                     echo '<i class="fas fa-male text-xl text-bold text-success"></i><span class="text-success text-lg"> ' . $number . '</span>';
                                                                                                                                                                                                 } else {
                                                                                                                                                                                                     echo '<i class="fas fa-female text-xl text-bold text-success"></i><span class="text-success text-lg"> ' . $number . '</span>';

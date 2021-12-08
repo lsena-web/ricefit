@@ -117,6 +117,12 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
                 'descricao' => $dados['descricao'],
                 'turma'     => $dados['turma'],
             ] + $anexo);
+
+            // SE DER ERROR
+            if ($atualizacao == false) {
+
+                $infoInputs = $con->read('id= ' .  $dados['id']);
+            }
         }
     }
 }
@@ -129,7 +135,7 @@ include __DIR__ . '/../view/admin/editAlunos.php';
 include __DIR__ . '/../includes/admin/footer.php';
 
 // OPERAÇÃO REALIZADA COM SUCESSO
-if (isset($atualizacao)) {
+if (isset($atualizacao) && $atualizacao == true) {
     echo "<script> $('#modalSucesso').modal('show'); </script>";
 }
 // ERRO NA OPERAÇÃO

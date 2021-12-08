@@ -7,6 +7,9 @@ use App\Session\Login;
 // INICIANDO SESSÃO
 Login::init();
 
+// AUXILIARES
+$aluno = '';
+
 // VERIFICANDO CHAVE
 if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id']) && isset($_GET['chave']) && !empty($_GET['chave'])) {
 
@@ -103,7 +106,7 @@ $imc    = '';
 // buscando informações de imc
 $avisos = $con2->read();
 
-if ($_SESSION['avaliacao']['sexo'] == 'm') {
+if ($aluno[0]['sexo'] == 'm') {
     $sexo = 'man';
 } else {
     $sexo = 'woman';

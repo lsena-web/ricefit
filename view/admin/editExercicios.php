@@ -1,5 +1,6 @@
 <?php
 $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning text-bold m-1">' . $alertaArquivo . '</div>' : '';
+$alerta     = strlen($alerta)    ? '<div class= "alert alert-danger text-bold m-1">' . $alerta . '</div>' : '';
 ?>
 <div class="modal fade" id="modalSucesso" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
@@ -49,6 +50,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                         </div>
                     </div>
                     <?= $alertaArquivo ?>
+                    <?= $alerta ?>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -56,7 +58,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                 <div class="col-12 col-sm-12">
 
                                     <div class="row">
-                                        <?php if (isset($infoInputs)) { ?>
+                                        <?php if (isset($infoInputs)) : ?>
                                             <input type="text" name="id" hidden value="<?php echo $infoInputs[0]['id']; ?>">
 
                                             <div class="col-lg-7 col-md-6 mb-3">
@@ -70,15 +72,15 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                                     <input type="file" class="custom-file-input" name="arquivo" id="customFile">
                                                     <label class="custom-file-label" for="customFile"><i class="fas fa-photo-video"></i></label>
                                                 </div>
-                                                <b><span>Formatos: Videos, Imagens</span><i class="fas fa-photo-video ml-2"></i></b>
+                                                <b><span>Formatos: videos e imagens. tamanho máximo: 39mb</span><i class="fas fa-photo-video ml-2"></i></b>
                                             </div>
 
 
                                             <div class="col-lg-12 col-md-12 mb-3">
-                                                <textarea name="descricao" id="summernote2" cols="30" rows="10" required><?php echo $infoInputs[0]['descricao']; ?></textarea>
+                                                <textarea name="descricao" id="summernote2" cols="30" rows="10"><?= $infoInputs[0]['descricao'] ?></textarea>
                                                 <b>Descrição <i class="fas fa-edit"></i></b>
                                             </div>
-                                        <?php } ?>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

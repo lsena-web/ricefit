@@ -69,7 +69,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
 
                                                 <div class="col-lg-6 col-md-6 mb-3">
                                                     <label class="text-success text-bold">E-mail:</label>
-                                                    <input class="form-control form-control-lg text-bold" type="text" name="email" value="<?= $inputs[0]['email'] ?>">
+                                                    <input class="form-control form-control-lg text-bold" type="email" name="email" value="<?= $inputs[0]['email'] ?>">
                                                 </div>
 
                                                 <div class="col-lg-6 col-md-6 mb-3">
@@ -92,7 +92,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                                 <div class="col-lg-12 col-md-12 mb-3">
                                                     <div class="callout callout-success">
                                                         <h5 class="text-bold text-success">Formatos Permitidos:</h5>
-                                                        <p>PNG, JPG, JPEG, SVG <i class="far fa-images ml-2"></i></p>
+                                                        <p>PNG, JPG, JPEG, SVG. tamanho máximo: 39mb <i class="far fa-images ml-2"></i></p>
                                                     </div>
                                                 </div>
 

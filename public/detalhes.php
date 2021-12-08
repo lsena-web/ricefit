@@ -30,7 +30,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
         // buscando informações de imc
         $avisos = $con2->read();
 
-        if ($_SESSION['avaliacao']['sexo'] == 'm') {
+        if ($_SESSION['cliente']['sexo'] == 'm') {
             $sexo = 'man';
         } else {
             $sexo = 'woman';

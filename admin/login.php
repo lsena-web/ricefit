@@ -50,10 +50,11 @@ if (isset($_POST['btnEntrar']) && !empty($_POST['btnEntrar'])) {
                 if (password_verify($senha, $testeLogin[0]['senha'])) { // senha correta?
 
                     $_SESSION['usuario'] = [
-                        'email' =>  $testeLogin[0]['email'],
-                        'nome' =>  $testeLogin[0]['nome'],
-                        'imagem' => $testeLogin[0]['anexo'],
-                        'logado' => true,
+                        'id'        =>  $testeLogin[0]['id'],
+                        'email'     =>  $testeLogin[0]['email'],
+                        'nome'      =>  $testeLogin[0]['nome'],
+                        'imagem'    =>  $testeLogin[0]['anexo'],
+                        'logado'    =>  true,
                     ];
                     header('Location: home.php');
                     exit;

@@ -1,3 +1,7 @@
+<?php
+$alerta     = strlen($alerta)    ? '<div class= "alert alert-danger text-bold m-1">' . $alerta . '</div>' : '';
+?>
+
 <div class="modal fade" id="modalSucesso" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content bg-success">
@@ -45,12 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php
-                    if (isset($_SESSION['arquivo']) && !empty($_SESSION['arquivo'])) { ?>
-                        <div class="alert alert-warning m-1 " role="alert"><?php echo $_SESSION['arquivo']; ?></div>
-                    <?php
-                        unset($_SESSION['arquivo']);
-                    } ?>
+                    <?= $alerta ?>
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -60,10 +59,7 @@
                                     <div class="row">
 
                                         <div class="col-lg-7 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="nome" placeholder="Nome do Exercício" required autocomplete="off" <?php if (isset($_SESSION['value_nome']) && !empty($_SESSION['value_nome'])) {
-                                                                                                                                                                                echo "value='" . $_SESSION['value_nome'] . "'";
-                                                                                                                                                                                unset($_SESSION['value_nome']);
-                                                                                                                                                                            } ?>>
+                                            <input class="form-control form-control-lg" type="text" name="nome" placeholder="Nome do Exercício" required autocomplete="off" value="<?= $nome ?>">
                                         </div>
 
                                         <div class="col-lg-5 col-md-6 mb-3">
@@ -71,14 +67,11 @@
                                                 <input type="file" class="custom-file-input" name="arquivo" id="customFile" required>
                                                 <label class="custom-file-label" for="customFile"><i class="fas fa-photo-video"></i></label>
                                             </div>
-                                            <b><span>Formatos: Videos, Imagens</span><i class="fas fa-photo-video ml-2"></i></b>
+                                            <b><span>Formatos: videos e imagens. tamanho máximo: 39mb</span><i class="fas fa-photo-video ml-2"></i></b>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 mb-3">
-                                            <textarea name="descricao" id="summernote2" cols="30" rows="10" required><?php if (isset($_SESSION['value_narrativa']) && !empty($_SESSION['value_narrativa'])) {
-                                                                                                                            echo  $_SESSION['value_narrativa'];
-                                                                                                                            unset($_SESSION['value_narrativa']);
-                                                                                                                        } ?></textarea>
+                                            <textarea name="descricao" id="summernote2" cols="30" rows="10"><?= $descricao ?></textarea>
                                             <b>Descrição <i class="fas fa-edit"></i></b>
                                         </div>
 

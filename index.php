@@ -54,6 +54,7 @@ if (isset($_POST['btnEntrar']) && !empty($_POST['btnEntrar'])) {
                             'email'     => $testeLogin[0]['email'],
                             'nome'      => $testeLogin[0]['nome'],
                             'imagem'    => $testeLogin[0]['anexo'],
+                            'sexo'    => $testeLogin[0]['sexo'],
                             'logado'    => true,
                         ];
                         header('Location: public/home.php');

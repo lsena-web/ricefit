@@ -69,7 +69,7 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                         </div>
 
                                         <div class="col-lg-7 col-md-6 mb-3">
-                                            <input class="form-control form-control-lg" type="text" name="email" placeholder="E-mail" required autocomplete="off" value="<?= $inputEmail ?>">
+                                            <input class="form-control form-control-lg" type="email" name="email" placeholder="E-mail" required autocomplete="off" value="<?= $inputEmail ?>">
                                         </div>
 
                                         <div class="col-lg-5 col-md-6 mb-3">
@@ -104,12 +104,12 @@ $alertaArquivo   = strlen($alertaArquivo)  ? '<div class= "alert alert-warning t
                                         <div class="col-lg-12 col-md-12">
                                             <div class="callout callout-success">
                                                 <h5 class="text-bold text-success">Formatos Permitidos:</h5>
-                                                <p>PNG, JPG, JPEG, SVG <i class="far fa-images ml-2"></i></p>
+                                                <p>PNG, JPG, JPEG, SVG tamanho máximo: 39mb<i class="far fa-images ml-2"></i></p>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 mb-3">
-                                            <textarea name="descricao" id="summernote2" cols="30" rows="10" required><?= $inputDescricao ?></textarea>
+                                            <textarea name="descricao" id="summernote2" cols="30" rows="10"><?= $inputDescricao ?></textarea>
                                             <b>Descrição <i class="fas fa-edit"></i></b>
                                         </div>
 

@@ -7,35 +7,51 @@ Login::login();
 
 $con = new \App\Model\Conexao('exercicios');
 
+// AUXILIARES
+$alerta    = '';
+$nome      = '';
+$descricao = '';
+
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
-    $formatosPermitidos = array("png", "jpge", "jpg", "svg", "mp4", "mkv", "avi", "wmv", "wma", "rmvb", "mov", "3gp", "flv", "gif");
 
-    // EXTENSÃO DO ARQUIVO
-    $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
-    if (in_array($extensao, $formatosPermitidos)) {
+    // FILTRANDO INPUTS
+    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        $pasta = "arquivos/exercicios/";
-        $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
-        $novoNome = uniqid() . ".$extensao";
+    // VERIFICANDO CAMPO DESCRIÇÃO
+    if (!empty($dados['descricao'])) {
 
-        // UPLOAD
-        move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
+        $formatosPermitidos = array("png", "jpge", "jpg", "svg", "mp4", "mkv", "avi", "wmv", "wma", "rmvb", "mov", "3gp", "flv", "gif");
 
-        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        // EXTENSÃO DO ARQUIVO
+        $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
 
-        $cadastro = $con->create([
-            'nome'    => $dados['nome'],
-            'descricao' => $dados['descricao'],
-            'anexo'     => $novoNome
-        ]);
+        // VALIDANDO EXTENSÃO
+        if (in_array($extensao, $formatosPermitidos)) {
+
+            $pasta = "arquivos/exercicios/";
+            $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
+            $novoNome = uniqid() . ".$extensao";
+
+            // UPLOAD
+            move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
+
+            // CADASTRANDO INFORMAÇÕES
+            $cadastro = $con->create([
+                'nome'      => $dados['nome'],
+                'descricao' => $dados['descricao'],
+                'anexo'     => $novoNome
+            ]);
+        } else {
+
+            $alerta    = 'Arquivo Inválido!';
+            $nome      = $_POST['nome'];
+            $descricao = $_POST['descricao'];
+        }
     } else {
 
-        $_SESSION['arquivo'] = 'Arquivo Inválido';
-        $_SESSION['value_nome'] = $_POST['nome'];
-        $_SESSION['value_narrativa'] = $_POST['descricao'];
-
-        header('Location' . $_SERVER['PHP_SELF']);
+        $alerta    = 'O campo descrição é obrigatório :)';
+        $nome      = $_POST['nome'];
     }
 }
 

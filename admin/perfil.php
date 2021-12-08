@@ -10,74 +10,88 @@ $con = new \App\Model\Conexao('admin');
 
 $inputs = $con->read();
 
-$alertaArquivo  = '';
+$alerta  = '';
 
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
+
+    // CONEXÃO
+    $con2 = new \App\Model\Conexao('alunos');
 
     // AUXILIARES
     $anexo = [];
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+    $email = $dados['email'];
+    $testeEmail = $con2->read('email = ' . "'$email'");
 
+    // VERIFICANDO SE O EMAIL JA SE ENCONTRA EM USO
+    if (!empty($testeEmail)) { // email, login, cpf
 
-    $formatosPermitidos = array("png", "jpg", "jpeg", "svg");
-    $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);    // EXTENSÃO DO ARQUIVO
+        $alerta = 'E-mail: ' . $email . ' já está em uso por um aluno!';
+    } else {
 
-    // VERIFICANDO SE A IMAGEM FOI ENVIADA
-    if (!empty($_FILES['arquivo']['tmp_name'])) {
+        $formatosPermitidos = array("png", "jpg", "jpeg", "svg");
+        $extensao = PATHINFO($_FILES['arquivo']['name'], PATHINFO_EXTENSION);    // EXTENSÃO DO ARQUIVO
 
-        if (in_array($extensao, $formatosPermitidos)) {
+        // VERIFICANDO SE A IMAGEM FOI ENVIADA
+        if (!empty($_FILES['arquivo']['tmp_name'])) {
 
-            $pasta = "arquivos/perfil/";
+            if (in_array($extensao, $formatosPermitidos)) {
 
-            $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
+                $pasta = "arquivos/perfil/";
 
-            $novoNome = uniqid() . ".$extensao";
+                $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
 
-            $arquivo = $con->read('id= ' . $_SESSION['cliente']['id']);
+                $novoNome = uniqid() . ".$extensao";
 
-            // CASO QUEIRA ATUALIZAR O ARQUIVO
-            if (!empty($novoNome)) {
+                $arquivo = $con->read('id= ' . $_SESSION['usuario']['id']);
 
-                foreach ($arquivo as $v) {
+                // CASO QUEIRA ATUALIZAR O ARQUIVO
+                if (!empty($novoNome)) {
 
-                    if (!empty($v['anexo'])) {
+                    foreach ($arquivo as $v) {
 
-                        unlink($pasta . $v['anexo']);
+                        if (!empty($v['anexo'])) {
+
+                            unlink($pasta . $v['anexo']);
+                        }
                     }
                 }
+
+                // ENVIANDO NOME DO ARQUIVO PARA A SESSÃO
+                $_SESSION['usuario']['imagem'] = $novoNome;
+
+                // ENVIANDO NOME DO ARQUIVO PARA O ARRAY
+                $anexo['anexo'] = $novoNome;
+                // UPLOAD
+                move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
+            } else {
+
+                $alerta  = 'Arquivo inválido! escolha um arquivo com formato permitido.';
             }
-
-            // ENVIANDO NOME DO ARQUIVO PARA O ARRAY
-            $anexo['anexo'] = $novoNome;
-            // UPLOAD
-            move_uploaded_file($caminhoTemporario, $pasta . $novoNome);
-        } else {
-
-            $alertaArquivo  = 'Arquivo inválido! escolha um arquivo com formato permitido.';
         }
-    }
 
 
-    // VERIFICANDO SE A SENHA FOI ENVIADA
-    if (isset($dados['senha']) && !empty($dados['senha'])) {
-        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        $senha = addslashes($dados['senha']);
-        $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
+        // VERIFICANDO SE A SENHA FOI ENVIADA
+        if (isset($dados['senha']) && !empty($dados['senha'])) {
+            $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+            $senha = addslashes($dados['senha']);
+            $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
 
-        $anexo['senha'] = $senhaSegura;
-    }
+            $anexo['senha'] = $senhaSegura;
+        }
 
-    // VERIFICANDO SE EXISTE ALGUM ALERTA
-    if (empty($alertaArquivo)) {
+        // VERIFICANDO SE EXISTE ALGUM ALERTA
+        if (empty($alertaArquivo)) {
 
-        $celular = preg_replace('/\D/', '', $dados['celular']);
+            $celular = preg_replace('/\D/', '', $dados['celular']);
 
-        $atualizacao = $con->update('id= ' . $dados['id'], [
-            'nome'    => $dados['nome'],
-            'email' => $dados['email'],
-            'celular' => $celular
-        ] + $anexo);
+            $atualizacao = $con->update('id= ' . $dados['id'], [
+                'nome'    => $dados['nome'],
+                'email' => $dados['email'],
+                'celular' => $celular
+            ] + $anexo);
+        }
     }
 }
 
