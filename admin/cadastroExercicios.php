@@ -14,7 +14,6 @@ $descricao = '';
 
 if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
-
     // FILTRANDO INPUTS
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -30,7 +29,9 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
         if (in_array($extensao, $formatosPermitidos)) {
 
             $pasta = "arquivos/exercicios/";
+
             $caminhoTemporario = $_FILES['arquivo']['tmp_name'];
+
             $novoNome = uniqid() . ".$extensao";
 
             // UPLOAD

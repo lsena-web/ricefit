@@ -12,8 +12,8 @@ $alerta = '';
 
 if (isset($_POST['btnEnviar']) && !empty($_POST['btnEnviar'])) {
 
-    $USER = '85de2a384eccd9';
-    $PASS = 'a0a839ac48ed62';
+    $USER = 'contato@clfitness.net.br';
+    $PASS = 'camillaCl$28';
 
     // CONEXÃO
     $con   = new \App\Model\Conexao('alunos');
@@ -44,28 +44,20 @@ if (isset($_POST['btnEnviar']) && !empty($_POST['btnEnviar'])) {
 
 
         if ($atualizacao ==  true) {
-            $link = 'http://localhost/ricefit/public/recover.php?chave=' . $chave;
+            $link = 'https://clfitness.net.br/public/recover.php?chave=' . $chave;
             try {
                 //Server settings
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->CharSet = 'UTF-8';
-                // $mail->isSMTP();
-                // $mail->Host       = 'smtp.mailtrap.io';
-                // $mail->SMTPAuth   = true;
-                // $mail->Username   = $USER;
-                // $mail->Password   = $PASS;
-                // //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                // $mail->Port       = 2525;
-
                 $mail->isSMTP();
-                $mail->Host = 'smtp.mailtrap.io';
-                $mail->SMTPAuth = true;
-                $mail->Port = 2525;
-                $mail->Username = 'cab380a4b2b3b5';
-                $mail->Password = '42bd9af8f95aba';
-
+                $mail->Host       = 'smtp.titan.email';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = $USER;
+                $mail->Password   = $PASS;
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port       = 465;
                 //Recipients
-                $mail->setFrom('lucas@gmail.com', 'riceFit');
+                $mail->setFrom($USER, 'noreply');
                 $mail->addAddress($informa['email'], $informa['nome']);     //Add a recipient
 
                 //Content
