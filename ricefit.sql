@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2021 às 21:08
+-- Tempo de geração: 09-Dez-2021 às 22:13
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.10
 
@@ -53,7 +53,7 @@ INSERT INTO `admin` (`id`, `nome`, `email`, `celular`, `senha`, `anexo`, `recove
 CREATE TABLE `alunos` (
   `id` int(11) NOT NULL,
   `nome` varchar(60) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(190) NOT NULL,
   `celular` char(14) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `sexo` enum('m','f') NOT NULL,
