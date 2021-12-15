@@ -28,7 +28,7 @@ class Conexao
             self::$connect = new \PDO('mysql:host=' . self::HOST . ';dbname=' . self::NAME . ';charset=utf8', self::USER, self::PASS);
             return self::$connect;
         } catch (\PDOException $e) {
-            header('Location:' . __DIR__ . '/../error.html');
+            echo 'error' . $e;
         }
     }
     /**
