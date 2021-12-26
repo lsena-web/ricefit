@@ -86,6 +86,9 @@ if (isset($_POST['btnSalvar']) && !empty($_POST['btnSalvar'])) {
 
             $celular = preg_replace('/\D/', '', $dados['celular']);
 
+            // sessão nome 
+            $_SESSION['usuario']['nome'] = $dados['nome'];
+
             $atualizacao = $con->update('id= ' . $dados['id'], [
                 'nome'    => $dados['nome'],
                 'email' => $dados['email'],

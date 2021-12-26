@@ -1,0 +1,7 @@
+Para a instalação do sistema de forma local é necessário:
+a instalação do apache, php v8.0 ou + e o banco de dados mysql(XAMPP).
+
+colocar sistema na pasta xampp/htdocs
+
+fazer o import do arquivo ricefit.sql e configurar os parâmetros de acordo com o seu phpmyadmin que se encontra:
+App/Model/Conexao.php
